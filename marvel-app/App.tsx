@@ -1,10 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>Hello You</Text>
+      <Image
+        style={styles.tinyLogo}
+        source={{uri: 'https://www.referenseo.com/wp-content/uploads/2019/03/image-attractive-960x540.jpg'}}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +19,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'pink',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
   },
 });
