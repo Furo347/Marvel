@@ -8,20 +8,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Comics from './component/comicsscreen';
 import Movies from './component/films';
 import Menu from './component/Menu';
+import Characters from './component/characters'
+
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Personnages" component={Accueil} />
-          <Stack.Screen name="Comics" component={Comics} />
-          <Stack.Screen name="Films" component={Movies} />
-        </Stack.Navigator>
-      </NavigationContainer>
-      <Menu />
+          <NavigationContainer>
+      <Stack.Navigator>
+      <Stack.Screen name="Personnage" component={Accueil} />
+  <Stack.Screen name="Comics" component={Comics} />
+  <Stack.Screen name="Film" component={Movies} />
+      </Stack.Navigator>
+    </NavigationContainer>
     </View>
   );
 }
@@ -29,6 +30,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 25,
+    marginBottom: 25,
+    marginRight: 5,
+    marginLeft: 5,
+
   },
   tinyLogo: {
     width: 500,
