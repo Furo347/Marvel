@@ -1,18 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import Menu from './compoment/Menu';
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>COUCOU</Text>
-      <Text>Hello You</Text>
-      <Image
-        style={styles.tinyLogo}
-        source={{uri: 'https://www.referenseo.com/wp-content/uploads/2019/03/image-attractive-960x540.jpg'}}
-      />
-      <StatusBar style="auto" />
+      <Menu />
     </View>
   );
 }
@@ -20,9 +15,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   tinyLogo: {
     width: 500,
