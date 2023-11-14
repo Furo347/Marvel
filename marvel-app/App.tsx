@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.titlepage}>Bienvenue aux Héros Marvel</Text>
+      <Text style={styles.hometitle}>Bienvenue aux Héros Marvel</Text>
       <Text>Choisis ton personnage</Text>
       <Image
         style={styles.tinyLogo}
@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     width: 500,
     height: 500,
   },
-  titlepage: {
-    fontWeight: 'bold',
-    fontSize: 20,
+  hometitle: {
+    fontWeight: '600',
+    fontSize: 32,
   },
 });
