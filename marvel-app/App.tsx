@@ -7,6 +7,7 @@ import AppNavigator from './component/appnavigator';
 import { createStackNavigator } from '@react-navigation/stack';
 import Comics from './component/comicsscreen';
 import Movies from './component/films';
+import Menu from './component/Menu';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
           <Stack.Screen name="Films" component={Movies} />
         </Stack.Navigator>
       </NavigationContainer>
+      <Menu />
     </View>
   );
 }
