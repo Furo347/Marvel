@@ -23,7 +23,7 @@ export default function HomeScreenCharacteres() {
 
 const styles = StyleSheet.create({
   imageContainer: {
-    position: 'relative',
+    position: 'absolute',
     marginRight: 170,
     borderStyle: 'solid',
     borderWidth: 2,
