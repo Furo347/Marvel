@@ -5,18 +5,25 @@ import { View, StyleSheet } from "react-native";
 import HomeScreenCharacteres from "./characters";
 
 export default function Accueil(){
-    return (
-        <View style={styles.container}>
+    return ( <><View style={styles.container}>
         <Menu />
-        <HomeScreenCharacteres />
         </View>
+        <View style={styles.container}>
+        <HomeScreenCharacteres />
+        </View></>
     )
 }
 const styles = StyleSheet.create({
-    container: {
+    container1: {
       flex: 1,
       flexDirection: "column",
       justifyContent: "flex-start",
       height: "100%",
     },
+    container2: {
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        height: "100%",
+      },
 })

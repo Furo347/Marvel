@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
+    position: 'relative'
   },
   menuButton: {
     padding: 10,

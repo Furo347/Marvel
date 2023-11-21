@@ -1,6 +1,6 @@
 import { useGetCharacterByName, ResponseItem } from "./useGetCharacterByName";
 
-export const useGetAlignementByRace = (name: string) => {
+export const useGetAlignementByName = (name: string) => {
   const { data, isLoading, isError } = useGetCharacterByName(name);
 
   if (isLoading) {
@@ -14,9 +14,9 @@ export const useGetAlignementByRace = (name: string) => {
   }
 
   if (data.length > 0 && data[1].biography) {
-    return data[1].powerstats || 'Powerstats data not available';
+    return data[1].biography.alignment || 'alignment data not available';
   }
 
   // If no valid data or alignment information found
-  return 'No apowerstats data available';
+  return 'No aalignment data available';
 };
