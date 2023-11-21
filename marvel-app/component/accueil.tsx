@@ -1,3 +1,4 @@
+//accueil.tsx
 import React from "react";
 import Menu from "./Menu";
 import { View, StyleSheet } from "react-native";
