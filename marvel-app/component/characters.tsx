@@ -1,9 +1,12 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+//characters.tsx
+import * as React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function HomeScreenCharacteres() {
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
@@ -19,14 +22,8 @@ export default function HomeScreenCharacteres() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 50
-  },
   imageContainer: {
-    position: 'relative',
+    position: 'absolute',
     marginRight: 170,
     borderStyle: 'solid',
     borderWidth: 2,

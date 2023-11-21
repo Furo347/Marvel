@@ -1,3 +1,4 @@
+//appnavigator.tsx
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ComicsScreen from './comicsscreen'; // Assurez-vous de spécifier le bon chemin

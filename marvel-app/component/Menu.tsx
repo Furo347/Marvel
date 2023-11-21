@@ -71,7 +71,6 @@ export default function Menu() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
     justifyContent: "flex-start",
   },
   menuButton: {
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
     height: 30,
   },
   sideMenu: {
-    width: Dimensions.get("window").width * 0.75,
+    width: 250,
     backgroundColor: "white",
     position: "absolute",
     top: 0,
@@ -102,7 +101,9 @@ const styles = StyleSheet.create({
     width: 100,
     height: 50,
     resizeMode: "contain",
-    left: 100,
+    position: "absolute",
+    left: 140,
+    top: 0,
   },
   search: {
     width: 40,
