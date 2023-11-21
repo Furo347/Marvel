@@ -1,3 +1,4 @@
+//characters.tsx
 import * as React from 'react';
 import { View, Text, SectionList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
