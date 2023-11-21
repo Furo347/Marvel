@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 export default function HomeScreenCharacteres() {
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
@@ -19,12 +19,6 @@ export default function HomeScreenCharacteres() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 50
-  },
   imageContainer: {
     position: 'relative',
     marginRight: 170,

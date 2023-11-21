@@ -14,7 +14,8 @@ export default function Accueil(){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection: "row",
+      flexDirection: "column",
       justifyContent: "flex-start",
+      height: "100%",
     },
 })

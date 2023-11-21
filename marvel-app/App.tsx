@@ -18,9 +18,9 @@ export default function App() {
     <View style={styles.container}>
           <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Personnage" component={Accueil} />
+      <Stack.Screen name="Personnages" component={Accueil} />
   <Stack.Screen name="Comics" component={Comics} />
-  <Stack.Screen name="Film" component={Movies} />
+  <Stack.Screen name="Films" component={Movies} />
       </Stack.Navigator>
     </NavigationContainer>
     </View>
