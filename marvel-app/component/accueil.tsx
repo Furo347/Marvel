@@ -6,17 +6,28 @@ import HomeScreenCharacters from "./characters";
 
 export default function Accueil(){
     return (
-        <View style={styles.container}>
+        <>
+            <View style={styles.container1}>
             <Menu />
-            <HomeScreenCharacters />
-        </View>
+            </View>
+            <View style={styles.container2}>
+                <HomeScreenCharacters />
+            </View>
+        </>
     )
 }
 const styles = StyleSheet.create({
-    container: {
+    container1: {
       flex: 1,
       flexDirection: "column",
       justifyContent: "flex-start",
       height: "100%",
+      marginBottom : -500
     },
+    container2: {
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        height: "100%",
+      },
 })
