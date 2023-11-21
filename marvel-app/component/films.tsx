@@ -1,12 +1,12 @@
 import React from "react";
 import { Image, View, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
 import Menu from "./Menu";
-import HomeScreenCharacteres from "./characters";
+import HomeScreenCharacters from "./characters";
 export default function Movies(){
     return (
         <View style={styles.container} >
             <Menu />
-            <HomeScreenCharacteres />
+            <HomeScreenCharacters />
         </View>
     );
 }

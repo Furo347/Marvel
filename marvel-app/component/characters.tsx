@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function HomeScreenCharacters() {
+
   const personnagesGentils = [
     'black_panther',
     'deadpool',
@@ -43,40 +46,43 @@ export default function HomeScreenCharacters() {
 
   return (
     <>
-    <ScrollView
-      contentContainerStyle={styles.scrollViewContent}
-      horizontal={true} // Permet le défilement horizontal
-    >
-      {personnagesGentils.map((personnage, index) => (
-        <View key={index} style={styles.imageContainer}>
-          <Image
-            style={styles.image}
-            source={imageGentil[personnage]}
-          />
-          <View style={styles.textContainer}>
-            <Text style={styles.sectionTitle}>Gentil</Text>
-            <Text style={styles.title}>{personnage}</Text>
-          </View>
-        </View>
-      ))}
-    </ScrollView>
+      <ScrollView>
+        <View><Text style={styles.categorie}>Gentil</Text></View>
+        <ScrollView
+          contentContainerStyle={styles.scrollViewContent}
+          horizontal={true}>
+          {personnagesGentils.map((personnage, index) => (
+            <View key={index} style={styles.imageContainer}>
+              <Image
+                style={styles.image}
+                source={imageGentil[personnage]}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.sectionTitle}>Gentil</Text>
+                <Text style={styles.title}>{personnage}</Text>
+              </View>
+            </View>
+          ))}
+        </ScrollView>
 
-    <ScrollView
-      contentContainerStyle={styles.scrollViewContent}
-      horizontal={true} >
-      {personnagesMechants.map((personnage, index) => (
-        <View key={index} style={styles.imageContainer}>
-          <Image
-            style={styles.image}
-            source={imageMechant[personnage]}
-          />
-          <View style={styles.textContainer}>
-            <Text style={styles.sectionTitle}>Méchant</Text>
-            <Text style={styles.title}>{personnage}</Text>
-          </View>
-        </View>
-      ))}
-    </ScrollView>
+        <View><Text style={styles.categorie}>Méchant</Text></View>
+        <ScrollView
+          contentContainerStyle={styles.scrollViewContent}
+          horizontal={true} >
+          {personnagesMechants.map((personnage, index) => (
+            <View key={index} style={styles.imageContainer}>
+              <Image
+                style={styles.image}
+                source={imageMechant[personnage]}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.sectionTitle}>Méchant</Text>
+                <Text style={styles.title}>{personnage}</Text>
+              </View>
+            </View>
+          ))}
+        </ScrollView>
+      </ScrollView>
     </>
   );
 }
@@ -117,4 +123,11 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: '#FFFFFF',
   },
+  categorie: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: 'red',
+    marginBottom : 40,
+    marginTop : 40
+  }
 });

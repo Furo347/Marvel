@@ -7,8 +7,8 @@ import HomeScreenCharacters from "./characters";
 export default function Accueil(){
     return (
         <View style={styles.container}>
-        <Menu />
-        <HomeScreenCharacters />
+            <Menu />
+            <HomeScreenCharacters />
         </View>
     )
 }
