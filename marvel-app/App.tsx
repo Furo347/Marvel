@@ -13,14 +13,15 @@ const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-          <NavigationContainer>
-      <Stack.Navigator>
-      <Stack.Screen name="Personnages" component={Accueil} />
-  <Stack.Screen name="Films" component={Movies} />
-      </Stack.Navigator>
-    </NavigationContainer>
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Personnages" component={Accueil} />
+          <Stack.Screen name="Films" component={Movies} />
+          <Stack.Screen name="CharacterDetails" component={CharacterDetails} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
 
