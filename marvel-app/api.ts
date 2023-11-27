@@ -5,6 +5,8 @@ const API_KEY='1420198532244042'
 
 export class ApiClient {
   static getCharacterByName = async (name: string) => {
-    return fetch(`${BASE_URL}/${API_KEY}/search/${name}`).then((res) => res.json());
-  };
+    return fetch(`${BASE_URL}/${API_KEY}/search/${name}`).then((res) => res.json()).then((data) => {
+      return data;
+  });
+  }
 }

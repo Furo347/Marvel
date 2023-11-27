@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { ApiClient } from "../api";
 
-type Item = {
+export type Item = {
   id?: number,
   name?: string,
   powerstats?: {
