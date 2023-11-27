@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import Accueil from './component/accueil';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Comics from './component/comicsscreen';
 import Movies from './component/films';
 
 
@@ -15,7 +14,6 @@ export default function App() {
           <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen name="Personnages" component={Accueil} />
-  <Stack.Screen name="Comics" component={Comics} />
   <Stack.Screen name="Films" component={Movies} />
       </Stack.Navigator>
     </NavigationContainer>
