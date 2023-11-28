@@ -2,9 +2,10 @@ import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { Item } from "../hooks/useGetCharacterByName";
 
 type RootStackParamList = {
-  CharacterDetails: { character: Character };
+  CharacterDetails: { character: Item };
 };
 
 type CharacterDetailsRouteProp = RouteProp<RootStackParamList, 'CharacterDetails'>;
@@ -19,7 +20,7 @@ export default function CharacterDetails({ route, navigation }: CharacterDetails
 
   return (
     <View>
-      <View style={styles.imageContainer}>
+      <View style={styles.container}>
         <Image
           style={styles.image}
           source={{ uri: character?.image?.url }}

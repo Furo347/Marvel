@@ -40,6 +40,11 @@ export default function Menu() {
               Personnages
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => selectMenuItem('Comics')}>
+            <Text style={selectedMenuItem === 'Comics' ? styles.selectedMenuItem : styles.menuItem} onPress={() => navigation.navigate('Comics')}>
+              Comics
+            </Text>
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => selectMenuItem('Films')}>
             <Text style={selectedMenuItem === 'Films' ? styles.selectedMenuItem : styles.menuItem} onPress={() => navigation.navigate('Films')}>
               Films
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    width: "100%",
+    position: 'relative'
   },
   menuButton: {
     padding: 10,
@@ -106,8 +111,8 @@ const styles = StyleSheet.create({
     height: 40,
     resizeMode: "contain",
     position: "absolute",
-    right: -330,
-    bottom: 660,
+    right: 0,
+    top: 0,
   },
   menuItem: {
     padding: 10,

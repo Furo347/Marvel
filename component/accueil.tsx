@@ -1,37 +1,29 @@
-import React, { useState } from "react";
+//accueil.tsx
+import React from "react";
 import Menu from "./Menu";
-import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet } from "react-native";
 import HomeScreenCharacteres from "./characters";
-import SelectTri from "./selecttri";
 
-export default function Accueil() {
-    const [isGentilValidated, setIsGentilValidated] = useState(false);
-    const [isVilainValidated, setIsVilainValidated] = useState(false);
-  
-    const handleGentilPress = () => {
-      setIsGentilValidated(!isGentilValidated);
-    };
-  
-    const handleVilainPress = () => {
-      setIsVilainValidated(!isVilainValidated);
-    };
-
-    return (
-        <><View style={styles.container}>
-            <Menu />
-        </View><View>
-                <SelectTri />
-                <HomeScreenCharacteres />
-            </View></>
-      );
-    }
-    
-
+export default function Accueil(){
+    return ( <><View style={styles.container1}>
+        <Menu />
+        </View>
+        <View style={styles.container2}>
+        <HomeScreenCharacteres />
+        </View></>
+    )
+}
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    height: "100%",
-    position: "absolute"
-  },
-});
+    container1: {
+      flex: 1,
+      flexDirection: "column",
+      justifyContent: "flex-start",
+      height: "100%",
+    },
+    container2: {
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        height: "100%",
+      },
+})
