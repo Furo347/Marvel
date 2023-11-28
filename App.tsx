@@ -16,7 +16,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Personnages" component={Accueil} />
+          <Stack.Screen name="Personnages" component={Accueil}/>
           <Stack.Screen name="Films" component={Movies} />
           <Stack.Screen name="CharacterDetails" component={CharacterDetails} />
         </Stack.Navigator>
