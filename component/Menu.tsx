@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Image, View, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
+import { Image, View, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,12 +48,10 @@ export default function Menu() {
         </View>
       )}
 
-      {!isMenuOpen && (
-        <Image
-          style={styles.logo}
-          source={require("../image/logomarvel.png")}
-        />
-      )}
+      <Image
+        style={styles.logo}
+        source={require("../image/logomarvel.png")}
+      />
 
       <Image
         style={styles.search}
@@ -67,23 +65,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    position: 'relative'
+    position: 'relative',
   },
   menuButton: {
-    padding: 10,
+    flex : 0,
+    padding : 10,
+    width: "15%",
   },
   menuIcon: {
     width: 30,
     height: 30,
   },
   sideMenu: {
-    width: 250,
+    width: "70%",
     backgroundColor: "white",
     position: "absolute",
     top: 0,
     left: 0,
-    height: "100%",
-    zIndex: 1,
+    height: "1500%",
+    zIndex: 2,
     borderRightWidth: 1,
     borderColor: "#ccc",
     padding: 20,
