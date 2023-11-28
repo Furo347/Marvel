@@ -6,22 +6,21 @@ import { useGetCharacterByName } from "../hooks/useGetCharacterByName";
 
 const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [buttonPressed, setButtonPressed] = useState(false); // State to track button press
   const navigation = useNavigation<StackNavigationProp<any>>();
-  const { data, isLoading, refetch } = useGetCharacterByName(searchQuery);
+  const { data, isLoading } = useGetCharacterByName(searchQuery);
 
   useEffect(() => {
-    if (data && !isLoading) {
-      const character = data?.results[0];
-      if (character) {
-        navigation.navigate('CharacterDetails', { character });
-      }
+    if (buttonPressed && data && data.results && data.results.length > 0) {
+      const character = data.results[0];
+      navigation.navigate('CharacterDetails', { character });
+      console.log("Navigating to CharacterDetails page");
+      setButtonPressed(false); // Reset button press state after navigation
     }
-  }, [data, isLoading, navigation]);
+  }, [buttonPressed, data, navigation, searchQuery]);
 
-  const handleSearch = () => async () => {
-    // Perform the search when the button is pressed
-    // This will trigger the API call to fetch data
-    await refetch();
+  const handleSearch = () => {
+    setButtonPressed(true);
   };
 
   return (
@@ -52,5 +51,3 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
-
-export default SearchPage;
