@@ -19,12 +19,12 @@ export default function Accueil(){
 
 const styles = StyleSheet.create({
     container1: {
-      height: "100%",
-      zIndex: 2,
+      top:2,
+      height:"100%",
     },
     container2: {
-        height: "100%",
-        position: "absolute",
-        top:40,
+      height: "100%",
+      position: "absolute",
+      top:50,
     },
 })

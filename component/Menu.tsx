@@ -48,12 +48,10 @@ export default function Menu() {
         </View>
       )}
 
-      {!isMenuOpen && (
-        <Image
-          style={styles.logo}
-          source={require("../image/logomarvel.png")}
-        />
-      )}
+      <Image
+        style={styles.logo}
+        source={require("../image/logomarvel.png")}
+      />
 
       <Image
         style={styles.search}
@@ -67,10 +65,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    position: 'relative'
+    position: 'relative',
   },
   menuButton: {
-    padding: 10,
+    flex : 0,
+    padding : 10,
+    width: "15%",
   },
   menuIcon: {
     width: 30,
