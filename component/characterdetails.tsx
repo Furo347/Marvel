@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
       height: 150,
       borderRadius: 10,
       overflow: 'hidden',
-      margin: 5,
+      padding: 10,
+      margin: 5, // Add margin to space out the containers
     },
     image: {
       width: '100%',
