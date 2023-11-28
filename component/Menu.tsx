@@ -1,7 +1,5 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Image, View, StyleSheet, TouchableOpacity, Text } from "react-native";
-
 import { Image, View, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Item } from "../hooks/useGetCharacterByName";
@@ -89,7 +87,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     position: 'absolute',
-    marginLeft: 380
+    marginLeft: "95%"
   },
   sideMenu: {
     width: "70%",
