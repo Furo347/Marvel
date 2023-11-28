@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     position: 'absolute',
-    marginLeft: 380
+    marginLeft: "95%"
   },
   sideMenu: {
     width: "70%",
