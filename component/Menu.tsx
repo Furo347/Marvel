@@ -40,11 +40,6 @@ export default function Menu() {
               Personnages
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => selectMenuItem('Comics')}>
-            <Text style={selectedMenuItem === 'Comics' ? styles.selectedMenuItem : styles.menuItem} onPress={() => navigation.navigate('Comics')}>
-              Comics
-            </Text>
-          </TouchableOpacity>
           <TouchableOpacity onPress={() => selectMenuItem('Films')}>
             <Text style={selectedMenuItem === 'Films' ? styles.selectedMenuItem : styles.menuItem} onPress={() => navigation.navigate('Films')}>
               Films

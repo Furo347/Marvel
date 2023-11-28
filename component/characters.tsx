@@ -31,7 +31,6 @@ export default function HomeScreenCharacters() {
   
   for (let i = 0; i < heroNames.length; i++) {
     const { data, isLoading } = useGetCharacterByName(heroNames[i]);
-    console.log(useGetCharacterByName(heroNames[i]));
     const character = data?.results[0];
     const alignment = character?.biography?.alignment;
     if (alignment === 'good') {
