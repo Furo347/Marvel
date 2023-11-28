@@ -7,7 +7,7 @@ export type Film={
     release_date: string,
     box_office: number,
     duration: number,
-    overwiew?: string,
+    overview?: string,
     cover_url: string,
     trailer_url?: string,
     directed_by: string,
