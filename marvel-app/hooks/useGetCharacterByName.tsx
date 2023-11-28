@@ -3,8 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { ApiClient } from "../api";
 
 export type Item = {
-  id?: number,
-  name?: string,
+  id: number,
+  name: string,
   powerstats?: {
     intelligence?: number,
     strength?: number,

@@ -26,7 +26,7 @@ export default function CharacterDetails({ route, navigation }: CharacterDetails
           source={{ uri: character?.image?.url }}
         />
         <View style={styles.textContainer}>
-          <Text style={styles.sectionTitle}>{character?.biography['full-name']}</Text>
+          <Text style={styles.sectionTitle}>{character?.biography!['full-name']}</Text>
           <Text style={styles.title}>{character?.name}</Text>
         </View>
       </View>

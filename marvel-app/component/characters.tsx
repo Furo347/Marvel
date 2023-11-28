@@ -23,14 +23,14 @@ const heroNames: string[] = [
 ];
 
 
-
 export default function HomeScreenCharacters() {
 
-  const tabGentil = [];
-  const tabMechant = [];
+  let tabGentil = [];
+  let tabMechant = [];
   
   for (let i = 0; i < heroNames.length; i++) {
     const { data, isLoading } = useGetCharacterByName(heroNames[i]);
+    console.log(useGetCharacterByName(heroNames[i]));
     const character = data?.results[0];
     const alignment = character?.biography?.alignment;
     if (alignment === 'good') {
@@ -45,7 +45,7 @@ export default function HomeScreenCharacters() {
     navigation.navigate('CharacterDetails', { character });
   };
 
-  const renderCharacterCards = (characters: Item) =>
+  const renderCharacterCards = (characters: Item[]) =>
   characters.map((character:  Item, index: number) => (
     <TouchableOpacity key={index} onPress={() => goToCharacterDetails(character)}>
       <View key={index} style={styles.imageContainer}>
@@ -78,12 +78,10 @@ export default function HomeScreenCharacters() {
   );
 }
 
-
-
 const styles = StyleSheet.create({
   scrollViewContent: {
     paddingHorizontal: 16,
-    flexDirection: 'row', // Aligne les personnages horizontalement
+    flexDirection: 'row',
   },
   imageContainer: {
     borderWidth: 2,
@@ -92,7 +90,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     height: 300,
     width: 150,
-    marginRight: 16, // Marge entre les images pour un meilleur aspect
+    marginRight: 16,
   },
   image: {
     resizeMode: 'cover',
