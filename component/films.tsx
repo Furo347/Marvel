@@ -3,10 +3,14 @@ import { Image, View, StyleSheet, TouchableOpacity, Text, Dimensions } from "rea
 import Menu from "./Menu";
 export default function Movies(){
     return (
-        <><View style={styles.container}>
-            <Menu />
-        </View><View>
-            </View></>
+        <>
+            <View style={styles.container}>
+                <Menu />
+            </View>
+            <View>
+                <Text>TEST</Text>
+            </View>
+        </>
     );
 }
 const styles = StyleSheet.create({

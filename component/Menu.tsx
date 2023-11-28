@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Image, View, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
+import { Image, View, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

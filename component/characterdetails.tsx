@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       overflow: 'hidden',
       padding: 10,
-      margin: 5, // Add margin to space out the containers
+      margin: 5,
     },
     image: {
       width: '100%',

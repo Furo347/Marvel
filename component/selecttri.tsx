@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
-import Menu from "./Menu";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 export default function SelectTri() {
     const [isGentilValidated, setIsGentilValidated] = useState(false);

@@ -23,7 +23,6 @@ const heroNames: string[] = [
 ];
 
 
-
 export default function HomeScreenCharacters() {
 
   let tabGentil = [];
