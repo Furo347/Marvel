@@ -35,12 +35,12 @@ export default function Menu() {
           <TouchableOpacity onPress={closeMenu} style={styles.closeButton}>
             <Text>Close</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => selectMenuItem('Personnages')}>
+          <TouchableOpacity onPress={() => {selectMenuItem('Personnages');toggleMenu();}}>
             <Text style={selectedMenuItem === 'Personnages' ? styles.selectedMenuItem : styles.menuItem} onPress={() => navigation.navigate('Personnages')}>
               Personnages
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => selectMenuItem('Films')}>
+          <TouchableOpacity onPress={() => { selectMenuItem('Films'); closeMenu(); }}>
             <Text style={selectedMenuItem === 'Films' ? styles.selectedMenuItem : styles.menuItem} onPress={() => navigation.navigate('Films')}>
               Films
             </Text>
