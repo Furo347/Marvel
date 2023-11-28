@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     container2: {
         height: "100%",
         position: "absolute",
-        top:40,
+        top:50,
       },
 })

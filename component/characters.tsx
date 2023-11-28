@@ -64,11 +64,11 @@ export default function HomeScreenCharacters() {
   return (
     <>
      <ScrollView>
-      <View><Text style={styles.categorie}>Gentil</Text></View>
+      <View><Text style={styles.categorie}>Protagonistes</Text></View>
       <ScrollView style={styles.scrollViewContent} horizontal={true}>
         {renderCharacterCards(tabGentil)}
       </ScrollView>
-      <View><Text style={styles.categorie}>Méchant</Text></View>
+      <View><Text style={styles.categorie}>Antagonistes</Text></View>
       <ScrollView style={styles.scrollViewContent} horizontal={true}>
         {renderCharacterCards(tabMechant)}
       </ScrollView>

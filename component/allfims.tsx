@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 
+type superhero = {
+  id:number,
+  title:string,
+  phase:string,
+  cover_url:string,
+}
+
+type item = {
+  id:number,
+  image:string,
+  name:string,
+}
+
 const SuperheroDisplay = () => {
   const [marvelSuperheroes, setMarvelSuperheroes] = useState([]);
 
@@ -11,7 +24,7 @@ const SuperheroDisplay = () => {
         const data = await response.json();
 
         if (data.data && Array.isArray(data.data)) {
-          const superheroesData = data.data.map(superhero => ({
+          const superheroesData = data.data.map((superhero:superhero) => ({
             id: superhero.id,
             name: superhero.title,
             phase: superhero.phase,
@@ -43,7 +56,7 @@ const SuperheroDisplay = () => {
     <View style={styles.scrollViewContent}>
       <FlatList
         data={marvelSuperheroes}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item:item) => item.id.toString()}
         horizontal={false}
         numColumns={2}
         renderItem={({ item }) => (
