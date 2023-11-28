@@ -15,15 +15,11 @@ export default function Accueil(){
 }
 const styles = StyleSheet.create({
     container1: {
-      flex: 1,
-      flexDirection: "column",
-      justifyContent: "flex-start",
       height: "100%",
     },
     container2: {
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "flex-start",
         height: "100%",
+        position: "absolute",
+        top:40,
       },
 })

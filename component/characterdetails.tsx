@@ -20,7 +20,7 @@ export default function CharacterDetails({ route, navigation }: CharacterDetails
 
   return (
     <View>
-      <View style={styles.container}>
+      <View style={styles.imageContainer}>
         <Image
           style={styles.image}
           source={{ uri: character?.image?.url }}
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
       height: 150, // Adjust height of each container
       borderRadius: 10,
       overflow: 'hidden',
+      padding: 10,
       margin: 5, // Add margin to space out the containers
     },
     image: {

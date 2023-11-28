@@ -68,11 +68,11 @@ export default function HomeScreenCharacters() {
     <>
      <ScrollView>
       <View><Text style={styles.categorie}>Gentil</Text></View>
-      <ScrollView contentContainerStyle={styles.scrollViewContent} horizontal={true}>
+      <ScrollView style={styles.scrollViewContent} horizontal={true}>
         {renderCharacterCards(tabGentil)}
       </ScrollView>
       <View><Text style={styles.categorie}>Méchant</Text></View>
-      <ScrollView contentContainerStyle={styles.scrollViewContent} horizontal={true}>
+      <ScrollView style={styles.scrollViewContent} horizontal={true}>
         {renderCharacterCards(tabMechant)}
       </ScrollView>
       </ScrollView>
@@ -84,17 +84,15 @@ export default function HomeScreenCharacters() {
 
 const styles = StyleSheet.create({
   scrollViewContent: {
-    paddingHorizontal: 16,
-    flexDirection: 'row', // Aligne les personnages horizontalement
+    paddingHorizontal: 10,
   },
   imageContainer: {
     borderWidth: 2,
     borderRadius: 10,
-    backgroundColor: 'rgba(42, 42, 42, 0.62)',
     overflow: 'hidden',
     height: 300,
     width: 150,
-    marginRight: 16, // Marge entre les images pour un meilleur aspect
+    marginRight: 10,
   },
   image: {
     resizeMode: 'cover',
@@ -123,11 +121,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '800',
     color: 'red',
-    marginBottom : 40,
-    marginTop : 40
+    marginBottom : 10,
+    marginTop : 10
   },
   details:  {
     color: 'white'
-  
   }
 });
