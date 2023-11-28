@@ -1,89 +1,84 @@
 import * as React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Item, useGetCharacterByName } from '../hooks/useGetCharacterByName';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+const heroNames: string[] = [
+  'Iron Man',
+  'Captain America',
+  'Spider-Man',
+  'Black Widow',
+  'Lex Luthor',
+  'Hulk',
+  'Wolverine',
+  'Deadpool',
+  'Wonder Woman',
+  'Batman',
+  'Superman',
+  'Black Panther',
+  'Doctor Strange',
+  'Aquaman',
+  'Killer Croc'
+];
+
+
 
 export default function HomeScreenCharacters() {
 
-  const personnagesGentils = [
-    'black_panther',
-    'deadpool',
-    'happy_hogan',
-    'howard_stark',
-    'iron_man',
-    'mary_jane',
-    'punisher',
-    'spider_man', 
-    'talos',
-  ];
-  const personnagesMechants = [
-    'dr_doom',
-    'green_goblin',
-    'red_skull',
-    'thanos',
-    'venom'
-  ];
-
-  const imageMechant = {
-    dr_doom: require('../image/dr_doom.png'),
-    green_goblin: require('../image/green_goblin.png'),
-    red_skull: require('../image/red_skull.png'),
-    thanos: require('../image/thanos.png'),
-    venom: require('../image/venom.png'),
-    ronan: require('../image/ronan.png'),
+  const tabGentil = [];
+  const tabMechant = [];
+  
+  for (let i = 0; i < heroNames.length; i++) {
+    const { data, isLoading } = useGetCharacterByName(heroNames[i]);
+    const character = data?.results[0];
+    const alignment = character?.biography?.alignment;
+    if (alignment === 'good') {
+      tabGentil.push(character);
+    } else {
+      tabMechant.push(character);
+    }
   }
-  const imageGentil = {
-    black_panther: require('../image/black_panther.png'),
-    deadpool: require('../image/deadpool.png'),
-    happy_hogan: require('../image/happy_hogan.png'),
-    howard_stark: require('../image/howard_stark.png'),
-    iron_man: require('../image/iron_man.png'),
-    mary_jane: require('../image/mary_jane.png'),
-    punisher: require('../image/punisher.png'),
-    spider_man: require('../image/spider_man.png'),
-    talos: require('../image/talos.png'),
+  
+  const navigation = useNavigation<StackNavigationProp<any>>();
+  const goToCharacterDetails = (character:  Item) => {
+    navigation.navigate('CharacterDetails', { character });
   };
+
+  const renderCharacterCards = (characters: Item) =>
+  characters.map((character:  Item, index: number) => (
+    <TouchableOpacity key={index} onPress={() => goToCharacterDetails(character)}>
+      <View key={index} style={styles.imageContainer}>
+        <Image
+          style={styles.image}
+          source={{ uri: character?.image?.url }} 
+        />
+        <View style={styles.textContainer}>
+          <Text style={styles.sectionTitle}>{character?.biography?.['full-name'] || ''}</Text>
+          <Text style={styles.title}>{character?.name || ''}</Text>
+          <Text style={styles.details}>Voir les détails</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+  ));
 
   return (
     <>
-      <ScrollView>
-        <View><Text style={styles.categorie}>Gentil</Text></View>
-        <ScrollView
-          contentContainerStyle={styles.scrollViewContent}
-          horizontal={true}>
-          {personnagesGentils.map((personnage, index) => (
-            <View key={index} style={styles.imageContainer}>
-              <Image
-                style={styles.image}
-                source={imageGentil[personnage]}
-              />
-              <View style={styles.textContainer}>
-                <Text style={styles.sectionTitle}>Gentil</Text>
-                <Text style={styles.title}>{personnage}</Text>
-              </View>
-            </View>
-          ))}
-        </ScrollView>
-
-        <View><Text style={styles.categorie}>Méchant</Text></View>
-        <ScrollView
-          contentContainerStyle={styles.scrollViewContent}
-          horizontal={true} >
-          {personnagesMechants.map((personnage, index) => (
-            <View key={index} style={styles.imageContainer}>
-              <Image
-                style={styles.image}
-                source={imageMechant[personnage]}
-              />
-              <View style={styles.textContainer}>
-                <Text style={styles.sectionTitle}>Méchant</Text>
-                <Text style={styles.title}>{personnage}</Text>
-              </View>
-            </View>
-          ))}
-        </ScrollView>
+     <ScrollView>
+      <View><Text style={styles.categorie}>Gentil</Text></View>
+      <ScrollView contentContainerStyle={styles.scrollViewContent} horizontal={true}>
+        {renderCharacterCards(tabGentil)}
+      </ScrollView>
+      <View><Text style={styles.categorie}>Méchant</Text></View>
+      <ScrollView contentContainerStyle={styles.scrollViewContent} horizontal={true}>
+        {renderCharacterCards(tabMechant)}
+      </ScrollView>
       </ScrollView>
     </>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   scrollViewContent: {
@@ -113,7 +108,8 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 10,
-    fontWeight: '300',
+    elevation: 50,
+    fontWeight: 'bold',
     color: '#FFFFFF',
   },
   title: {
@@ -127,5 +123,9 @@ const styles = StyleSheet.create({
     color: 'red',
     marginBottom : 40,
     marginTop : 40
+  },
+  details:  {
+    color: 'white'
+  
   }
 });
