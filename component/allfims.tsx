@@ -85,14 +85,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageContainer: {
+    bottom:"20%",
     borderWidth: 2,
     borderRadius: 10,
     overflow: 'hidden',
     height: 300,
-    width: '48%',
-    marginRight: 10,
-    marginBottom: 10,
-    position: "relative"
+    width: '45%',
+    marginLeft: "1%",
+    marginRight: "5%",
+    marginBottom: "5%",
+    position: "relative",
   },
   image: {
     resizeMode: 'cover',
