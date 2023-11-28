@@ -6,21 +6,26 @@ import SuperheroDisplay from "./allfims";
 
 
 export default function Accueil(){
-    return ( <><View style={styles.container1}>
-        <Menu />
+    return (
+      <>
+        <View style={styles.container1}>
+          <Menu />
         </View>
         <View style={styles.container2}>
-        <SuperheroDisplay />
-        </View></>
+          <SuperheroDisplay />
+        </View>
+      </>
     )
 }
 const styles = StyleSheet.create({
     container1: {
-      height: "100%",
+      top:2,
+      height:"15%",
+      zIndex:2,
     },
     container2: {
         height: "100%",
         position: "absolute",
-        top:40,
+        top:50,
       },
 })

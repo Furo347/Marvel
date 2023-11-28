@@ -78,6 +78,7 @@ const SuperheroDisplay = () => {
 
 const styles = StyleSheet.create({
   scrollViewContent: {
+    paddingBottom:"20%",
     paddingHorizontal: 10,
     top: 10,
     overflow: 'hidden',
@@ -89,10 +90,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     height: 300,
-    width: '48%',
-    marginRight: 10,
-    marginBottom: 10,
-    position: "relative"
+    width: '45%',
+    marginLeft: "1%",
+    marginRight: "5%",
+    marginBottom: "5%",
+    position: "relative",
   },
   image: {
     resizeMode: 'cover',
