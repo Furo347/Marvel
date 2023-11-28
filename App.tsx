@@ -1,6 +1,5 @@
 // App.tsx
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import Accueil from './component/accueil';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -18,7 +17,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Personnages" component={Accueil} />
+          <Stack.Screen name="Personnages" component={Accueil}/>
           <Stack.Screen name="Films" component={Movies} />
           <Stack.Screen name="CharacterDetails" component={CharacterDetails} />
           <Stack.Screen name="SearchPage" component={SearchPage} />
@@ -27,17 +26,3 @@ export default function App() {
     </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 25,
-    marginBottom: 25,
-    marginRight: 5,
-    marginLeft: 5,
-  },
-  tinyLogo: {
-    width: 500,
-    height: 500,
-  },
-});

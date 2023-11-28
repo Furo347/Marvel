@@ -1,5 +1,7 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
+import { Image, View, StyleSheet, TouchableOpacity, Text } from "react-native";
+
 import { Image, View, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Item } from "../hooks/useGetCharacterByName";
@@ -39,17 +41,12 @@ export default function Menu() {
           <TouchableOpacity onPress={closeMenu} style={styles.closeButton}>
             <Text>Close</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => selectMenuItem('Personnages')}>
+          <TouchableOpacity onPress={() => {selectMenuItem('Personnages');toggleMenu();}}>
             <Text style={selectedMenuItem === 'Personnages' ? styles.selectedMenuItem : styles.menuItem} onPress={() => navigation.navigate('Personnages')}>
               Personnages
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => selectMenuItem('Comics')}>
-            <Text style={selectedMenuItem === 'Comics' ? styles.selectedMenuItem : styles.menuItem} onPress={() => navigation.navigate('Comics')}>
-              Comics
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => selectMenuItem('Films')}>
+          <TouchableOpacity onPress={() => { selectMenuItem('Films'); closeMenu(); }}>
             <Text style={selectedMenuItem === 'Films' ? styles.selectedMenuItem : styles.menuItem} onPress={() => navigation.navigate('Films')}>
               Films
             </Text>
@@ -77,12 +74,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    position: 'relative'
+    position: 'relative',
   },
   menuButton: {
-    padding: 10,
-    flex:0,
-    width: 15
+    flex : 0,
+    padding : 10,
+    width: "15%",
   },
   menuIcon: {
     width: 30,
@@ -95,13 +92,13 @@ const styles = StyleSheet.create({
     marginLeft: 380
   },
   sideMenu: {
-    width: 250,
+    width: "70%",
     backgroundColor: "white",
     position: "absolute",
     top: 0,
     left: 0,
-    height: "100%",
-    zIndex: 1,
+    height: "1500%",
+    zIndex: 2,
     borderRightWidth: 1,
     borderColor: "#ccc",
     padding: 20,

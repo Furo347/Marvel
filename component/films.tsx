@@ -1,19 +1,31 @@
+//accueil.tsx
 import React from "react";
-import { Image, View, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
 import Menu from "./Menu";
-export default function Movies(){
+import { View, StyleSheet } from "react-native";
+import SuperheroDisplay from "./allfims";
+
+
+export default function Accueil(){
     return (
-        <><View style={styles.container}>
-            <Menu />
-        </View><View>
-            </View></>
-    );
+      <>
+        <View style={styles.container1}>
+          <Menu />
+        </View>
+        <View style={styles.container2}>
+          <SuperheroDisplay />
+        </View>
+      </>
+    )
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "flex-start",
+    container1: {
+      top:2,
+      height:"15%",
+      zIndex:2,
+    },
+    container2: {
         height: "100%",
-        position: "absolute"
+        position: "absolute",
+        top:50,
       },
 })
