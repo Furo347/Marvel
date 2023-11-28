@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
-import { NavigationContainer,useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import { Item, useGetCharacterByName } from '../hooks/useGetCharacterByName';
-import CharacterDetails from './characterdetails';
-import { useGetAlignementByName } from '../hooks/useGetAlignementByName';
 import { StackNavigationProp } from '@react-navigation/stack';
+
 const heroNames: string[] = [
   'Iron Man',
   'Captain America',
@@ -22,17 +20,18 @@ const heroNames: string[] = [
   'Doctor Strange',
   'Aquaman',
   'Killer Croc'
-
 ];
 
 
 
 export default function HomeScreenCharacters() {
-  const tabGentil = [];
-  const tabMechant = [];
+
+  let tabGentil = [];
+  let tabMechant = [];
   
   for (let i = 0; i < heroNames.length; i++) {
     const { data, isLoading } = useGetCharacterByName(heroNames[i]);
+    console.log(useGetCharacterByName(heroNames[i]));
     const character = data?.results[0];
     const alignment = character?.biography?.alignment;
     if (alignment === 'good') {
@@ -47,7 +46,7 @@ export default function HomeScreenCharacters() {
     navigation.navigate('CharacterDetails', { character });
   };
 
-  const renderCharacterCards = (characters: Item) =>
+  const renderCharacterCards = (characters: Item[]) =>
   characters.map((character:  Item, index: number) => (
     <TouchableOpacity key={index} onPress={() => goToCharacterDetails(character)}>
       <View key={index} style={styles.imageContainer}>
@@ -79,8 +78,6 @@ export default function HomeScreenCharacters() {
     </>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   scrollViewContent: {
@@ -126,5 +123,6 @@ const styles = StyleSheet.create({
   },
   details:  {
     color: 'white'
+  
   }
 });

@@ -20,13 +20,13 @@ export default function CharacterDetails({ route, navigation }: CharacterDetails
 
   return (
     <View>
-      <View style={styles.imageContainer}>
+      <View>
         <Image
           style={styles.image}
           source={{ uri: character?.image?.url }}
         />
         <View style={styles.textContainer}>
-          <Text style={styles.sectionTitle}>{character?.biography['full-name']}</Text>
+          <Text style={styles.sectionTitle}>{character?.biography!['full-name']}</Text>
           <Text style={styles.title}>{character?.name}</Text>
         </View>
       </View>
@@ -36,11 +36,11 @@ export default function CharacterDetails({ route, navigation }: CharacterDetails
 
 const styles = StyleSheet.create({
     flatListContainer: {
-      padding: 10, // Add padding to space out the items
+      padding: 10,
     },
     container: {
-      width: 150, // Adjust width of each container
-      height: 150, // Adjust height of each container
+      width: 150,
+      height: 150,
       borderRadius: 10,
       overflow: 'hidden',
       padding: 10,
