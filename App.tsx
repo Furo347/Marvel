@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Movies from './component/films';
 import CharacterDetails from './component/characterdetails';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import SearchPage from './component/searchpage';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
           <Stack.Screen name="Personnages" component={Accueil} />
           <Stack.Screen name="Films" component={Movies} />
           <Stack.Screen name="CharacterDetails" component={CharacterDetails} />
+          <Stack.Screen name="SearchPage" component={SearchPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </QueryClientProvider>

@@ -1,13 +1,13 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Image, View, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
-
+import { StackNavigationProp } from '@react-navigation/stack';
+import { Item } from "../hooks/useGetCharacterByName";
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const route = useRoute();
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>(route.name);
-  
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<any>>();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -19,6 +19,10 @@ export default function Menu() {
 
   const selectMenuItem = (item: string) => {
     setSelectedMenuItem(item);
+  };
+
+  const goToSearchPage = () => {
+    navigation.navigate('SearchPage');
   };
 
   return (
@@ -59,11 +63,12 @@ export default function Menu() {
           source={require("../image/logomarvel.png")}
         />
       )}
-
-      <Image
-        style={styles.search}
-        source={require("../image/search.png")}
-      />
+       <TouchableOpacity onPress={goToSearchPage} style= {styles.searchButton}>
+        <Image
+          style={styles.search}
+          source={require("../image/search.png")}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -76,10 +81,18 @@ const styles = StyleSheet.create({
   },
   menuButton: {
     padding: 10,
+    flex:0,
+    width: 15
   },
   menuIcon: {
     width: 30,
     height: 30,
+  },
+  searchButton: {
+    width: 40,
+    height: 40,
+    position: 'absolute',
+    marginLeft: 380
   },
   sideMenu: {
     width: 250,
@@ -112,7 +125,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     position: "absolute",
     right: 0,
-    top: 0,
+    bottom: 0
   },
   menuItem: {
     padding: 10,

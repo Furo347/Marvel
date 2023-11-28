@@ -16,10 +16,11 @@ export default function Accueil(){
 const styles = StyleSheet.create({
     container1: {
       height: "100%",
+      // zIndex: 2
     },
     container2: {
         height: "100%",
         position: "absolute",
-        top:40,
+        top:50,
       },
 })
