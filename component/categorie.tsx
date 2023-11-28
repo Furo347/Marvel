@@ -1,3 +1,1 @@
-export default function Categorie() {
-    
-}
+export default function Categorie() {}
