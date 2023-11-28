@@ -63,7 +63,7 @@ export default function HomeScreenCharacters() {
 
   return (
     <>
-     <ScrollView>
+     <ScrollView style={styles.scroll}>
       <View><Text style={styles.categorie}>Protagonistes</Text></View>
       <ScrollView style={styles.scrollViewContent1} horizontal={true}>
         {renderCharacterCards(tabGentil)}
@@ -78,6 +78,9 @@ export default function HomeScreenCharacters() {
 }
 
 const styles = StyleSheet.create({
+  scroll:{
+    top:"3%",
+  },
   scrollViewContent1: {
     paddingHorizontal: 10,
   },
@@ -120,7 +123,8 @@ const styles = StyleSheet.create({
   categorie: {
     fontSize: 20,
     fontWeight: '800',
-    color: 'red',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    color: 'white',
     marginBottom : 10,
     marginTop : 10
   },

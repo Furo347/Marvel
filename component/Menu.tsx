@@ -73,8 +73,11 @@ const styles = StyleSheet.create({
     width: "15%",
   },
   menuIcon: {
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
+    backgroundColor : 'white',
+    borderRadius:50,
+    
   },
   sideMenu: {
     width: "70%",
@@ -104,10 +107,12 @@ const styles = StyleSheet.create({
   search: {
     width: 40,
     height: 40,
+    backgroundColor : 'white',
+    borderRadius:50,
     resizeMode: "contain",
     position: "absolute",
-    right: 0,
-    top: 0,
+    right: 2,
+    top: 5,
   },
   menuItem: {
     padding: 10,

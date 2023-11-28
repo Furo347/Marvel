@@ -1,7 +1,7 @@
 //accueil.tsx
 import React from "react";
 import Menu from "./Menu";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet,ImageBackground } from "react-native";
 import HomeScreenCharacters from "./characters";
 
 export default function Accueil(){
@@ -11,7 +11,9 @@ export default function Accueil(){
           <Menu />
         </View>
         <View style={styles.container2}>
-          <HomeScreenCharacters />
+          <ImageBackground source={require('../image/EndGameMarvel.jpg')}>
+            <HomeScreenCharacters />
+          </ImageBackground>
         </View>
       </>
     )
@@ -20,8 +22,9 @@ export default function Accueil(){
 const styles = StyleSheet.create({
     container1: {
       top:2,
-      height:"15%",
+      height:"10%",
       zIndex:2,
+      backgroundColor:'#051232',
     },
     container2: {
       height: "100%",
