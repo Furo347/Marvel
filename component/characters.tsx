@@ -22,7 +22,6 @@ const heroNames: string[] = [
   'Killer Croc'
 ];
 
-
 export default function HomeScreenCharacters() {
 
   let tabGentil = [];

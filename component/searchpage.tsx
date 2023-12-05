@@ -14,8 +14,7 @@ const SearchPage = () => {
     if (buttonPressed && data && data.results && data.results.length > 0) {
       const character = data.results[0];
       navigation.navigate('CharacterDetails', { character });
-      console.log("Navigating to CharacterDetails page");
-      setButtonPressed(false); // Reset button press state after navigation
+      setButtonPressed(false); 
     }
   }, [buttonPressed, data, navigation, searchQuery]);
 
