@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, Linking, ScrollView } from "react-native";
 import { FontAwesome } from '@expo/vector-icons'; // Import FontAwesome icons
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
@@ -34,22 +34,23 @@ const FilmsDetails = ({ route, navigation }: FilmsDetailsProps) => {
       />
       <View style={styles.overlay}>
         <View style={styles.textContainer}>
-          <Text style={styles.title}>Titre: {film.title}</Text>
+          <ScrollView>
+          <Text style={styles.title}>{film.title}</Text>
           <View style={styles.iconText}>
             <FontAwesome name="ticket" size={16} color="#FFFFFF" style={styles.icon} />
-            <Text style={styles.sectionTitle}>Box office: {film.box_office}</Text>
+            <Text style={styles.sectionTitle}>{film.box_office}</Text>
           </View>
           <View style={styles.iconText}>
             <FontAwesome name="calendar" size={16} color="#FFFFFF" style={styles.icon} />
-            <Text style={styles.sectionTitle}>Date de sortie: {formattedDate}</Text>
+            <Text style={styles.sectionTitle}>{formattedDate}</Text>
           </View>
           <View style={styles.iconText}>
             <FontAwesome name="pencil" size={16} color="#FFFFFF" style={styles.icon} />
-            <Text style={styles.sectionTitle}>Réalisateur: {film.directed_by}</Text>
+            <Text style={styles.sectionTitle}>{film.directed_by}</Text>
           </View>
           <View style={styles.iconText}>
             <FontAwesome name="hourglass" size={16} color="#FFFFFF" style={styles.icon} />
-            <Text style={styles.sectionTitle}>Durée: {film.duration}</Text>
+            <Text style={styles.sectionTitle}>{film.duration}</Text>
           </View>
           <TouchableOpacity style={styles.linkContainer} onPress={handleTrailerPress}>
             <FontAwesome name="link" size={16} color="#FFFFFF" style={styles.icon} />
@@ -59,6 +60,7 @@ const FilmsDetails = ({ route, navigation }: FilmsDetailsProps) => {
           <Text style={styles.sectionTitle}>Saga: {film.saga}</Text>
           <Text style={styles.sectionTitle}>Chronologie: {film.chronology}</Text>
           <Text style={styles.sectionTitle}>Phase: {film.phase}</Text>
+          </ScrollView>
         </View>
       </View>
     </View>
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#FF0000',
     marginBottom: 10,
     textAlign: 'center',
   },
