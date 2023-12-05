@@ -15,7 +15,7 @@ interface CharacterDetailsProps {
   navigation: StackNavigationProp<RootStackParamList, 'CharacterDetails'>;
 }
 
-export default function CharacterDetails({ route, navigation }: CharacterDetailsProps) {
+export default function CharacterDetails({ route }: CharacterDetailsProps) {
   const { character } = route.params;
 
   return (
