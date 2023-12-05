@@ -32,7 +32,7 @@ export default function HomeScreenCharacters() {
     if (data){ if ('results' in data && data.results && Array.isArray(data.results) && data.results.length > 0) {
       const character = data.results[0];
     const alignment = character?.biography?.alignment;
-    
+
     if (alignment === 'good') {
       tabGentil.push(character);
     } else {
@@ -40,7 +40,6 @@ export default function HomeScreenCharacters() {
     }}}
    
   }
-  
   
   const navigation = useNavigation<StackNavigationProp<any>>();
   const goToCharacterDetails = (character:  Item) => {
@@ -126,9 +125,9 @@ const styles = StyleSheet.create({
   categorie: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#F2264B',
     marginBottom : 10,
-    marginTop : 10
+    marginTop : 10,
+    color: 'red'
   },
   details:  {
     color: 'white'
