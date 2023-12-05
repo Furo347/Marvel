@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Fond sombre avec une opacité de 80%
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -73,14 +73,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '300',
     color: '#FFFFFF',
-    textAlign: 'center', // Justifier le texte au centre
-    marginVertical: 5, // Espacement vertical entre les lignes
+    textAlign: 'center',
+    marginVertical: 5,
   },
   title: {
     fontSize: 24,
     fontWeight: '800',
     color: '#FFFFFF',
-    marginBottom: 10, // Espacement en bas du titre
+    marginBottom: 10,
   },
 });
 
