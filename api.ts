@@ -14,4 +14,9 @@ export class ApiClient {
       return data;
   });
   }
+  static getCharacterById = async (id: number) => {
+    return fetch(`${BASE_URL}/${API_KEY}/${id}`).then((res) => res.json()).then((data) => {
+      return data;
+  });
+}
 }
