@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { BarChart, XAxis, YAxis, Grid } from 'react-native-svg-charts';
-
+import * as scale from 'd3-scale'
 interface PowerStatsChartProps {
   character: {
     powerstats?: {
@@ -13,7 +13,7 @@ interface PowerStatsChartProps {
 
 const PowerStatsChart: React.FC<PowerStatsChartProps> = ({ character }) => {
   const { powerstats } = character;
-    console.log(powerstats)
+
   if (!powerstats || Object.keys(powerstats).length === 0) {
     return (
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -36,39 +36,33 @@ const PowerStatsChart: React.FC<PowerStatsChartProps> = ({ character }) => {
     key,
     value: value ?? 0,
   }));
-
-  const contentInset = { top: 20, bottom: 20 };
   console.log(data)
   return (
-    <View>
-      <View style={{ height: 200, flexDirection: 'row' }}>
-        <YAxis
-          data={data}
-          contentInset={contentInset}
-          svg={{ fontSize: 10, fill: 'black' }}
-          numberOfTicks={5}
-          formatLabel={(value) => `${value}%`}
-        />
-        <View style={{ flex: 1, marginLeft: 10 }}>
-          <BarChart
-            style={{ flex: 1 }}
-            data={data}
-            yAccessor={({ item }) => item.value}
-            svg={{ fill: 'orange' }}
-            contentInset={contentInset}
-          >
-            <Grid />
-          </BarChart>
-          <XAxis
-            data={data}
-            formatLabel={(index) => data[index].key}
-            contentInset={{ left: 10, right: 10 }}
-            svg={{ fontSize: 10, fill: 'black' }}
-          />
-        </View>
-      </View>
-    </View>
+    <View style={{ flexDirection: 'row', height: 200, paddingVertical: 16 }}>
+    <YAxis
+        data={data}
+        yAccessor={({ index }) => index}
+        scale={scale.scaleBand}
+        contentInset={{ top: 10, bottom: 10 }}
+        formatLabel={(_, index) => data[ index ].key}
+    />
+    <BarChart
+        style={{ flex: 1, marginLeft: 8 }}
+        data={data}
+        horizontal={true}
+        yAccessor={({ item }) => {
+          console.log(item.value); // Log the value here
+          return item.value; // Return the value for proper yAccessor
+        }}
+        svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
+        contentInset={{ top: 10, bottom: 10 }}
+        gridMin={0}
+    >
+        <Grid direction={Grid.Direction.VERTICAL}/>
+    </BarChart>
+</View>
   );
 };
 
 export default PowerStatsChart;
+

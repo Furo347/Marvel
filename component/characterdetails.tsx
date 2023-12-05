@@ -86,7 +86,7 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
               <FontAwesome name="users" size={16} color="#FFFFFF" style={styles.icon} />
               <Text style={styles.sectionTitle}>Relations: {character?.connections?.relatives}</Text>
             </View>
-            <View style={{ flex: 1 }}>
+            <View style={{backgroundColor: "white" }}>
             <PowerStatsChart character={character} />
             </View>
           </View>
@@ -99,7 +99,6 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: 'relative',
   },
   image: {
     flex: 1,
@@ -109,11 +108,9 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
     justifyContent: 'center',
-    alignItems: 'center',
   },
   textContainer: {
     padding: 20,
-    alignItems: 'center',
   },
   sectionTitle: {
     fontSize: 16,
