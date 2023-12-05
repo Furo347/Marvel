@@ -12,9 +12,7 @@ export default function Accueil(){
           <Menu />
         </View>
         <View style={styles.container2}>
-          <ImageBackground source={require('../image/EndGameMarvel.jpg')}>
-            <SuperheroDisplay />
-          </ImageBackground>
+          <SuperheroDisplay />
         </View>
       </>
     )
@@ -24,7 +22,6 @@ const styles = StyleSheet.create({
       top:2,
       height:"10%",
       zIndex:2,
-      backgroundColor:'#051232',
     },
     container2: {
         height: "100%",

@@ -52,12 +52,11 @@ export default function Menu() {
         </View>
       )}
 
-      {!isMenuOpen && (
         <Image
           style={styles.logo}
           source={require("../image/logomarvel.png")}
         />
-      )}
+
        <TouchableOpacity onPress={goToSearchPage} style= {styles.searchButton}>
         <Image
           style={styles.search}
@@ -82,7 +81,6 @@ const styles = StyleSheet.create({
   menuIcon: {
     width: 40,
     height: 40,
-    backgroundColor : 'white',
     borderRadius:50,
     
   },
@@ -120,12 +118,11 @@ const styles = StyleSheet.create({
   search: {
     width: 40,
     height: 40,
-    backgroundColor : 'white',
     borderRadius:50,
     resizeMode: "contain",
     position: "absolute",
-    right: 0,
-    bottom: 0
+    right: 5,
+    top: 5
   },
   menuItem: {
     padding: 10,
