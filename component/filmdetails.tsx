@@ -23,7 +23,11 @@ const FilmsDetails = ({ route, navigation }: FilmsDetailsProps) => {
   const formattedDate = format(new Date(film.release_date), "dd/MM/yyyy", { locale: fr });
 
   const handleTrailerPress = () => {
-    Linking.openURL(film.trailer_url);
+    if (film && film.trailer_url) {
+      Linking.openURL(film.trailer_url);
+    } else {
+      console.log('Trailer URL is undefined or film does not exist');
+    }
   };
 
   return (
