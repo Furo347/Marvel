@@ -1,4 +1,3 @@
-import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Video } from "expo-av";
 import Constants from "expo-constants";
@@ -7,6 +6,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { Film } from "../hooks/useGetFilmByName";
+import React from "react";
+
 type RootStackParamList = {
     FilmsDetails: { film: Film };
 };

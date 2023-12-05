@@ -3,24 +3,13 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from 'reac
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useGetCharacterById, Item } from '../hooks/useGetCharacterById';
-import AllgoodCharacter from './allcharactergood';
 
-const heroNames: number[] = [
-  1,
-  4,
-  5,
-  6,
-  10,
-  11,
-  12,
-  13,
-  21,
-  25,
-  31,
-  39
-];
+const heroNames: number[] = [];
+for (let id = 1; id <= 731; id++) {
+  heroNames.push(id);
+}
 
-export default function HomeScreenCharacters() {
+export default function AllgoodCharacter() {
 
   let tabGentil = [];
   let tabMechant = [];
@@ -37,8 +26,6 @@ for (const heroName of heroNames) {
 
     if (alignment === 'good') {
       tabGentil.push(character);
-    } else {
-      tabMechant.push(character);
     }
   }
 }
@@ -65,29 +52,15 @@ for (const heroName of heroNames) {
       </View>
     </TouchableOpacity>
   ));
-  const goToAllCharacters = () => {
-    navigation.navigate('AllgoodCharacter');
-  };
+
   return (
     <>
     <ScrollView>
       <View style={styles.categoryContainer}>
         <Text style={styles.categorie}>Protagonistes</Text>
-        <TouchableOpacity onPress={goToAllCharacters} style={styles.seeAllText}>
-          <View>
-            <Text style={styles.seeAllText}>Voir tout</Text>
-            </View>
-          </TouchableOpacity>
       </View>
       <ScrollView style={styles.scrollViewContent1} horizontal={true}>
-        {renderCharacterCards(tabGentil.slice(0, 6))}
-      </ScrollView>
-      <View style={styles.categoryContainer}>
-        <Text style={styles.categorie}>Antagonistes</Text>
-        <Text style={styles.seeAllText}>Voir tout</Text>
-      </View>
-      <ScrollView style={styles.scrollViewContent2} horizontal={true}>
-        {renderCharacterCards(tabMechant.slice(0, 6))}
+        {renderCharacterCards(tabGentil)}
       </ScrollView>
     </ScrollView>
   </>
