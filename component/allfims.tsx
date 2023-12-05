@@ -1,8 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Dimensions} from 'react-native';
 import { Film } from '../hooks/useGetFilmByName';
+
+const { width, height } = Dimensions.get('window');
 
 const SuperheroDisplay = () => {
   const [marvelSuperheroes, setMarvelSuperheroes] = useState<Film[]>([]);
@@ -47,7 +49,13 @@ const SuperheroDisplay = () => {
   }, []);
 
   if (marvelSuperheroes.length === 0) {
-    return <Text>Loading...</Text>;
+    return (    
+    <View style={styles.cont}>
+      <Image
+        style={styles.img}
+        source={require('../image/shield.png')}
+      />
+    </View>)
   }
 
   return (
@@ -130,6 +138,15 @@ const styles = StyleSheet.create({
   details: {
     color: 'white',
   },
+  cont : {
+  },
+  img: {
+    position: 'absolute',
+    width: 150,
+    height: 150,
+    top: height/4,
+    left: width/3
+  }
 });
 
 export default SuperheroDisplay;

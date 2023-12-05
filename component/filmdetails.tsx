@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, Linking, ScrollView } from "react-native";
 import { FontAwesome } from '@expo/vector-icons'; // Import FontAwesome icons
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
@@ -34,6 +34,7 @@ const FilmsDetails = ({ route, navigation }: FilmsDetailsProps) => {
       />
       <View style={styles.overlay}>
         <View style={styles.textContainer}>
+        <ScrollView>
           <Text style={styles.title}>Titre: {film.title}</Text>
           <View style={styles.iconText}>
             <FontAwesome name="ticket" size={16} color="#FFFFFF" style={styles.icon} />
@@ -59,6 +60,7 @@ const FilmsDetails = ({ route, navigation }: FilmsDetailsProps) => {
           <Text style={styles.sectionTitle}>Saga: {film.saga}</Text>
           <Text style={styles.sectionTitle}>Chronologie: {film.chronology}</Text>
           <Text style={styles.sectionTitle}>Phase: {film.phase}</Text>
+        </ScrollView>
         </View>
       </View>
     </View>
