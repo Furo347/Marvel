@@ -19,54 +19,66 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
   const { character } = route.params;
 
   return (
-    <View>
-      <View>
+    
+    <View style={styles.container}>
         <Image
           style={styles.image}
           source={{ uri: character?.image?.url }}
         />
-        <View style={styles.textContainer}>
-          <Text style={styles.sectionTitle}>{character?.biography!['full-name']}</Text>
-          <Text style={styles.title}>{character?.name}</Text>
+        <View style={styles.overlay}>
+        <Text style={styles.title}>{character?.name}</Text>
+          <Text style={styles.sectionTitle}>Nom et prénom: {character?.biography!['full-name']}</Text>
+          <Text style={styles.sectionTitle}>Lieu de naissance: {character?.biography!['place-of-birth']}</Text>
+          <Text style={styles.sectionTitle}>Première apparition: {character?.biography!['first-appearance']}</Text>
+          <Text style={styles.sectionTitle}>Genre: {character?.appearance?.gender}</Text>
+          <Text style={styles.sectionTitle}>Race: {character?.appearance?.race}</Text>
+          <Text style={styles.sectionTitle}>Taille: {character?.appearance?.height?.[1]}</Text>
+          <Text style={styles.sectionTitle}>Poids: {character?.appearance?.weight?.[1]}</Text>
+          <Text style={styles.sectionTitle}>Couleur des yeux: {character?.appearance?.["eye-color"]}</Text>
+          <Text style={styles.sectionTitle}>Couleur des cheveux: {character?.appearance?.["hair-color"]}</Text>
+          <Text style={styles.sectionTitle}>Métier: {character?.work?.occupation}</Text>
+          <Text style={styles.sectionTitle}>Base: {character?.work?.base}</Text>
+          <Text style={styles.sectionTitle}>Affiliation: {character?.connections?.["group-affiliation"]}</Text>
+          <Text style={styles.sectionTitle}>Raltions: {character?.connections?.relatives}</Text>
         </View>
-      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-    flatListContainer: {
-      padding: 10,
-    },
-    container: {
-      width: 150,
-      height: 150,
-      borderRadius: 10,
-      overflow: 'hidden',
-      padding: 10,
-      margin: 5,
-    },
-    image: {
-      width: '100%',
-      height: '100%',
-      resizeMode: 'cover',
-    },
-    textContainer: {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: 'rgba(42, 42, 42, 0.62)',
-      padding: 5,
-    },
-    sectionTitle: {
-      fontSize: 8,
-      fontWeight: '300',
-      color: '#FFFFFF',
-    },
-    title: {
-      fontSize: 16,
-      fontWeight: '800',
-      color: '#FFFFFF',
-    },
-  });
+  container: {
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textContainer: {
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '300',
+    color: '#FFFFFF',
+    textAlign: 'center',
+    marginVertical: 5,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 10,
+  },
+});
