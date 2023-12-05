@@ -8,13 +8,18 @@ const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [buttonPressed, setButtonPressed] = useState(false); // State to track button press
   const navigation = useNavigation<StackNavigationProp<any>>();
-  const { data, isLoading } = useGetCharacterByName(searchQuery);
+  const { data } = useGetCharacterByName(searchQuery);
 
   useEffect(() => {
-    if (buttonPressed && data && data.results && data.results.length > 0) {
-      const character = data.results[0];
-      navigation.navigate('CharacterDetails', { character });
-      setButtonPressed(false); 
+    if (buttonPressed && data) {
+      // Check if 'results' exists within 'data'
+      if ('results' in data && data.results && Array.isArray(data.results) && data.results.length > 0) {
+        const character = data.results[0];
+        navigation.navigate('CharacterDetails', { character });
+        setButtonPressed(false); 
+      } else {
+        console.log('Results not found or empty');
+      }
     }
   }, [buttonPressed, data, navigation, searchQuery]);
 

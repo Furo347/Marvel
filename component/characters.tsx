@@ -28,17 +28,17 @@ export default function HomeScreenCharacters() {
   let tabMechant = [];
   
   for (const heroName of heroNames) {
-    const { data, isLoading } = useGetCharacterByName(heroName);
-    const character = data?.results[0];
+    const { data } = useGetCharacterByName(heroName);
+    if (data){ if ('results' in data && data.results && Array.isArray(data.results) && data.results.length > 0) {
+      const character = data.results[0];
     const alignment = character?.biography?.alignment;
-    
+
     if (alignment === 'good') {
       tabGentil.push(character);
     } else {
       tabMechant.push(character);
-    }
+    }}}
   }
-  
   
   const navigation = useNavigation<StackNavigationProp<any>>();
   const goToCharacterDetails = (character:  Item) => {
