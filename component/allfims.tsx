@@ -1,21 +1,15 @@
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
-
-type superhero = {
-  id:number,
-  title:string,
-  phase:string,
-  cover_url:string,
-}
-
-type item = {
-  id:number,
-  image:string,
-  name:string,
-}
+import { Film } from '../hooks/useGetFilmByName';
 
 const SuperheroDisplay = () => {
-  const [marvelSuperheroes, setMarvelSuperheroes] = useState([]);
+  const [marvelSuperheroes, setMarvelSuperheroes] = useState<Film[]>([]);
+  const navigation = useNavigation<StackNavigationProp<any>>();
+  const goToFilmsDetails = (film: Film) => {
+    navigation.navigate('FilmsDetails', { film });
+  };
 
   useEffect(() => {
     const fetchDataForSuperhero = async () => {
@@ -24,18 +18,26 @@ const SuperheroDisplay = () => {
         const data = await response.json();
 
         if (data.data && Array.isArray(data.data)) {
-          const superheroesData = data.data.map((superhero:superhero) => ({
+          const superheroesData: Film[] = data.data.map((superhero: Film) => ({
             id: superhero.id,
-            name: superhero.title,
+            title: superhero.title,
             phase: superhero.phase,
-            image: superhero.cover_url,
+            cover_url: superhero.cover_url,
+            release_date: superhero.release_date,
+            box_office: superhero.box_office,
+            duration: superhero.duration,
+            overview: superhero.overview,
+            trailer_url: superhero.trailer_url,
+            directed_by: superhero.directed_by,
+            saga: superhero.saga,
+            chronology: superhero.chronology,
+            post_credit_scenes: superhero.post_credit_scenes,
           }));
 
           setMarvelSuperheroes(superheroesData);
         } else {
           console.error('Invalid data structure:', data);
         }
-
       } catch (error) {
         console.error('Error fetching superhero data:', error);
       }
@@ -48,27 +50,25 @@ const SuperheroDisplay = () => {
     return <Text>Loading...</Text>;
   }
 
-  function goToCharacterDetails(character: any): void {
-    throw new Error('Function not implemented.');
-  }
-
   return (
     <View style={styles.scrollViewContent}>
       <FlatList
         data={marvelSuperheroes}
-        keyExtractor={(item:item) => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         horizontal={false}
         numColumns={2}
         renderItem={({ item }) => (
           <View style={styles.imageContainer}>
-            <Image
-              style={styles.image}
-              source={{ uri: item?.image }} 
-            />
-            <View style={styles.textContainer}>
-              <Text style={styles.title}>{item.name || ''}</Text>
-              <Text style={styles.details}>Voir les détails</Text>
-            </View>
+            <TouchableOpacity onPress={() => goToFilmsDetails(item)} >
+              <Image
+                style={styles.image}
+                source={{ uri: item?.cover_url }}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.title}>{item.title || ''}</Text>
+                <Text style={styles.details}>Voir les détails</Text>
+              </View>
+            </TouchableOpacity>
           </View>
         )}
       />
