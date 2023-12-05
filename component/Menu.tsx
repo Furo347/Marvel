@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Image, View, StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Item } from "../hooks/useGetCharacterByName";
+
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const route = useRoute();
@@ -52,12 +53,11 @@ export default function Menu() {
         </View>
       )}
 
-      {!isMenuOpen && (
         <Image
           style={styles.logo}
           source={require("../image/logomarvel.png")}
         />
-      )}
+
        <TouchableOpacity onPress={goToSearchPage} style= {styles.searchButton}>
         <Image
           style={styles.search}
@@ -80,8 +80,10 @@ const styles = StyleSheet.create({
     width: "15%",
   },
   menuIcon: {
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
+    borderRadius:50,
+    
   },
   searchButton: {
     width: 40,
@@ -117,10 +119,11 @@ const styles = StyleSheet.create({
   search: {
     width: 40,
     height: 40,
+    borderRadius:50,
     resizeMode: "contain",
     position: "absolute",
-    right: 0,
-    bottom: 0
+    right: 5,
+    top: 5
   },
   menuItem: {
     padding: 10,

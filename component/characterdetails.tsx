@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { FontAwesome } from '@expo/vector-icons'; // Import FontAwesome icons
 import { Item } from "../hooks/useGetCharacterByName";
 
 type RootStackParamList = {
@@ -15,57 +16,92 @@ interface CharacterDetailsProps {
   navigation: StackNavigationProp<RootStackParamList, 'CharacterDetails'>;
 }
 
-export default function CharacterDetails({ route, navigation }: CharacterDetailsProps) {
+export default function CharacterDetails({ route }: CharacterDetailsProps) {
   const { character } = route.params;
 
   return (
-    
     <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: character?.image?.url }}
-        />
-        <View style={styles.overlay}>
+      <Image
+        style={styles.image}
+        source={{ uri: character?.image?.url }}
+      />
+      <View style={styles.overlay}>
+      <ScrollView>
         <Text style={styles.title}>{character?.name}</Text>
-          <Text style={styles.sectionTitle}>Nom et prénom: {character?.biography!['full-name']}</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.sectionTitle}>{character?.biography!['full-name']}</Text>
+          <View style={styles.iconText}>
+            <FontAwesome name="map-marker" size={16} color="#FFFFFF" style={styles.icon} />
           <Text style={styles.sectionTitle}>Lieu de naissance: {character?.biography!['place-of-birth']}</Text>
-          <Text style={styles.sectionTitle}>Première apparition: {character?.biography!['first-appearance']}</Text>
-          <Text style={styles.sectionTitle}>Genre: {character?.appearance?.gender}</Text>
-          <Text style={styles.sectionTitle}>Race: {character?.appearance?.race}</Text>
-          <Text style={styles.sectionTitle}>Taille: {character?.appearance?.height?.[1]}</Text>
-          <Text style={styles.sectionTitle}>Poids: {character?.appearance?.weight?.[1]}</Text>
-          <Text style={styles.sectionTitle}>Couleur des yeux: {character?.appearance?.["eye-color"]}</Text>
-          <Text style={styles.sectionTitle}>Couleur des cheveux: {character?.appearance?.["hair-color"]}</Text>
-          <Text style={styles.sectionTitle}>Métier: {character?.work?.occupation}</Text>
-          <Text style={styles.sectionTitle}>Base: {character?.work?.base}</Text>
-          <Text style={styles.sectionTitle}>Affiliation: {character?.connections?.["group-affiliation"]}</Text>
-          <Text style={styles.sectionTitle}>Raltions: {character?.connections?.relatives}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="book" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>{character?.biography!['first-appearance']}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="venus-mars" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>{character?.appearance?.gender}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="user" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>{character?.appearance?.race}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="arrows-v" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>{character?.appearance?.height?.[1]}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="balance-scale" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>{character?.appearance?.weight?.[1]}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="eye" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>{character?.appearance?.["eye-color"]}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="paint-brush" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>{character?.appearance?.["hair-color"]}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="briefcase" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>Métier: {character?.work?.occupation}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="map-marker" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>Base: {character?.work?.base}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="users" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>Affiliation: {character?.connections?.["group-affiliation"]}</Text>
+          </View>
+          <View style={styles.iconText}>
+            <FontAwesome name="users" size={16} color="#FFFFFF" style={styles.icon} />
+            <Text style={styles.sectionTitle}>Relations: {character?.connections?.relatives}</Text>
+          </View>
         </View>
+        </ScrollView>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     position: 'relative',
   },
   image: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     resizeMode: 'cover',
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
   textContainer: {
     padding: 20,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   sectionTitle: {
@@ -78,7 +114,17 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#FF0000',
+    textAlign: 'center',
     marginBottom: 10,
+  },
+  iconText: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+    justifyContent: 'center',
+  },
+  icon: {
+    marginRight: 5,
   },
 });

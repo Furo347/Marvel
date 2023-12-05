@@ -39,10 +39,8 @@ for (const heroName of heroNames) {
       tabGentil.push(character);
     } else {
       tabMechant.push(character);
-    }
-  }
-}
-  
+    }}}
+
   
   const navigation = useNavigation<StackNavigationProp<any>>();
   const goToCharacterDetails = (character:  Item) => {
@@ -95,6 +93,9 @@ for (const heroName of heroNames) {
 }
 
 const styles = StyleSheet.create({
+  scroll:{
+    top:"3%",
+  },
   scrollViewContent1: {
     paddingHorizontal: 10,
   },
@@ -137,9 +138,9 @@ const styles = StyleSheet.create({
   categorie: {
     fontSize: 20,
     fontWeight: '800',
-    color: 'red',
     marginBottom : 10,
-    marginTop : 10
+    marginTop : 10,
+    color: 'red'
   },
   details:  {
     color: 'white'
