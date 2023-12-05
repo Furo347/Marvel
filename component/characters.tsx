@@ -124,8 +124,7 @@ const styles = StyleSheet.create({
   categorie: {
     fontSize: 20,
     fontWeight: '800',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    color: 'white',
+    color: '#F2264B',
     marginBottom : 10,
     marginTop : 10
   },
