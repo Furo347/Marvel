@@ -1,13 +1,17 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Image, View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { Image, View, StyleSheet, TouchableOpacity, Text, TextInput, Button } from "react-native";
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useGetCharacterByName } from "../hooks/useGetCharacterByName";
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isBarreOpen, setIsBarreOpen] = useState(false);
   const route = useRoute();
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>(route.name);
   const navigation = useNavigation<StackNavigationProp<any>>();
+  const [searchQuery, setSearchQuery] = useState("");
+  const { data } = useGetCharacterByName(searchQuery);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,10 +24,19 @@ export default function Menu() {
   const selectMenuItem = (item: string) => {
     setSelectedMenuItem(item);
   };
-
-  const goToSearchPage = () => {
-    navigation.navigate('SearchPage');
+  
+  const OuvFermBarre = () => {
+    setIsBarreOpen(!isBarreOpen);
   };
+
+  const handleSearch = () => {
+    if (data){
+      if ('results' in data && data.results && Array.isArray(data.results) && data.results.length > 0) {
+        const character = data.results[0];
+        navigation.navigate('CharacterDetails', { character });
+      }
+      };
+    }
 
   return (
     <View style={styles.container}>
@@ -52,18 +65,36 @@ export default function Menu() {
         </View>
       )}
 
-      {!isMenuOpen && (
+      {!isMenuOpen && isBarreOpen && (
+        <>
+          <View style={styles.barreItem}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search..."
+              value={searchQuery}
+              onChangeText={(text) => setSearchQuery(text)}
+            />
+            <TouchableOpacity onPress={handleSearch} style={styles.fleche}>
+            <Image
+              style={styles.menuIcon}
+              source={require("../image/fleche-droite.png")}
+            />
+            </TouchableOpacity>
+          </View>
+        </>
+      )}
+
         <Image
           style={styles.logo}
           source={require("../image/logomarvel.png")}
-        />
-      )}
-       <TouchableOpacity onPress={goToSearchPage} style= {styles.searchButton}>
-        <Image
-          style={styles.search}
-          source={require("../image/search.png")}
-        />
-      </TouchableOpacity>
+          />
+
+        <TouchableOpacity onPress={OuvFermBarre} style= {styles.searchButton}>
+          <Image
+            style={styles.search}
+            source={require("../image/search.png")}
+          />
+        </TouchableOpacity>
     </View>
   );
 }
@@ -80,8 +111,10 @@ const styles = StyleSheet.create({
     width: "15%",
   },
   menuIcon: {
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
+    borderRadius:50,
+    
   },
   searchButton: {
     width: 40,
@@ -117,10 +150,11 @@ const styles = StyleSheet.create({
   search: {
     width: 40,
     height: 40,
+    borderRadius:50,
     resizeMode: "contain",
     position: "absolute",
-    right: 0,
-    bottom: 0
+    right: 5,
+    top: 5
   },
   menuItem: {
     padding: 10,
@@ -133,4 +167,31 @@ const styles = StyleSheet.create({
     color: 'red',
     fontWeight: 'bold',
   },
+  barreItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderBottomWidth: 0,
+    borderBottomColor: 'white',
+    borderTopWidth: 15,
+    borderTopColor: 'white',
+    paddingVertical: 1,
+    paddingHorizontal: 10,
+    top : -5
+  },
+  searchInput: {
+    height : 40,
+    width: "100%",
+    borderWidth: 3,
+    borderColor: "#444444",
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 15,
+    color : 'black',
+    fontSize: 15,
+  },
+  fleche : {
+    right : 50,
+    marginBottom : 10
+  }
 });

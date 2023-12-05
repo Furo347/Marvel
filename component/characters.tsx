@@ -32,7 +32,7 @@ export default function HomeScreenCharacters() {
     if (data){ if ('results' in data && data.results && Array.isArray(data.results) && data.results.length > 0) {
       const character = data.results[0];
     const alignment = character?.biography?.alignment;
-    
+
     if (alignment === 'good') {
       tabGentil.push(character);
     } else {
@@ -40,7 +40,6 @@ export default function HomeScreenCharacters() {
     }}}
    
   }
-  
   
   const navigation = useNavigation<StackNavigationProp<any>>();
   const goToCharacterDetails = (character:  Item) => {
@@ -66,7 +65,7 @@ export default function HomeScreenCharacters() {
 
   return (
     <>
-     <ScrollView>
+     <ScrollView style={styles.scroll}>
       <View><Text style={styles.categorie}>Protagonistes</Text></View>
       <ScrollView style={styles.scrollViewContent1} horizontal={true}>
         {renderCharacterCards(tabGentil)}
@@ -81,6 +80,9 @@ export default function HomeScreenCharacters() {
 }
 
 const styles = StyleSheet.create({
+  scroll:{
+    top:"3%",
+  },
   scrollViewContent1: {
     paddingHorizontal: 10,
   },
@@ -123,9 +125,9 @@ const styles = StyleSheet.create({
   categorie: {
     fontSize: 20,
     fontWeight: '800',
-    color: 'red',
     marginBottom : 10,
-    marginTop : 10
+    marginTop : 10,
+    color: 'red'
   },
   details:  {
     color: 'white'
