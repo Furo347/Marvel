@@ -40,7 +40,8 @@ for (const heroName of heroNames) {
     } else {
       tabMechant.push(character);
     }}}
-
+   
+  
   
   const navigation = useNavigation<StackNavigationProp<any>>();
   const goToCharacterDetails = (character:  Item) => {
