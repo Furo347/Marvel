@@ -12,8 +12,8 @@ for (let id = 1; id <= 731; id++) {
 
 interface AllgoodCharacterProps {}
 
-export default function AllgoodCharacter(props: AllgoodCharacterProps) {
-  const tabGentil: Item[] = [];
+export default function AllbadCharacter(props: AllgoodCharacterProps) {
+  const tabMechants: Item[] = [];
 
   for (const heroName of heroNames) {
     const { data, isLoading } = useGetCharacterById(heroName);
@@ -25,8 +25,8 @@ export default function AllgoodCharacter(props: AllgoodCharacterProps) {
     if (isMarvelCharacter) {
       const alignment = character?.biography?.alignment;
 
-      if (alignment === 'good') {
-        tabGentil.push(character);
+      if (alignment === 'bad') {
+        tabMechants.push(character);
       }
     }
   }
@@ -39,7 +39,7 @@ export default function AllgoodCharacter(props: AllgoodCharacterProps) {
   return (
     <View style={styles.scrollViewContent}>
       <FlatList
-        data={tabGentil}
+        data={tabMechants}
         keyExtractor={(item) => item.id.toString()}
         horizontal={false}
         numColumns={2}
@@ -47,7 +47,7 @@ export default function AllgoodCharacter(props: AllgoodCharacterProps) {
           <View style={styles.imageContainer}>
             <TouchableOpacity onPress={() => goToCharacterDetails(item)} >
             <Image style={styles.image} source={{ uri: item?.image?.url }} />
-        <View style={styles.textContainer}>
+        <View style={styles.textContainer}>   
           <Text style={styles.sectionTitle}>{item?.biography?.['full-name'] || ''}</Text>
           <Text style={styles.title}>{item?.name || ''}</Text>
           <Text style={styles.details}>Voir les détails</Text>

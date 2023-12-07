@@ -4,6 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FontAwesome } from '@expo/vector-icons'; // Import FontAwesome icons
 import { Item } from "../hooks/useGetCharacterByName";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type RootStackParamList = {
   CharacterDetails: { character: Item };
@@ -18,14 +19,14 @@ interface CharacterDetailsProps {
 
 export default function CharacterDetails({ route }: CharacterDetailsProps) {
   const { character } = route.params;
-
+  const {top}= useSafeAreaInsets();
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
         source={{ uri: character?.image?.url }}
       />
-      <View style={styles.overlay}>
+      <View style={[styles.overlay, {paddingTop: top}]}>
       <ScrollView>
         <Text style={styles.title}>{character?.name}</Text>
         <View style={styles.textContainer}>

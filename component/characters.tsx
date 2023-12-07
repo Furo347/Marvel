@@ -63,15 +63,18 @@ for (const heroName of heroNames) {
       </View>
     </TouchableOpacity>
   ));
-  const goToAllCharacters = () => {
+  const goToAllCharactersgood = () => {
     navigation.navigate('AllgoodCharacter');
+  };
+  const goToAllCharactersbad = () => {
+    navigation.navigate('AllbadCharacter');
   };
   return (
     <>
     <ScrollView>
       <View style={styles.categoryContainer}>
         <Text style={styles.categorie}>Protagonistes</Text>
-        <TouchableOpacity onPress={goToAllCharacters} style={styles.seeAllText}>
+        <TouchableOpacity onPress={goToAllCharactersgood} style={styles.seeAllText}>
           <View>
             <Text style={styles.seeAllText}>Voir tout</Text>
             </View>
@@ -82,7 +85,11 @@ for (const heroName of heroNames) {
       </ScrollView>
       <View style={styles.categoryContainer}>
         <Text style={styles.categorie}>Antagonistes</Text>
-        <Text style={styles.seeAllText}>Voir tout</Text>
+        <TouchableOpacity onPress={goToAllCharactersbad} style={styles.seeAllText}>
+          <View>
+            <Text style={styles.seeAllText}>Voir tout</Text>
+            </View>
+          </TouchableOpacity>
       </View>
       <ScrollView style={styles.scrollViewContent2} horizontal={true}>
         {renderCharacterCards(tabMechant.slice(0, 6))}
