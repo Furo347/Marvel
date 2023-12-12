@@ -6,6 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Item } from "../hooks/useGetCharacterByName";
 import PowerStatsChart from './PowerStatsChart';
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 export interface PowerStats {
   intelligence?: string;
   strength?: string;
@@ -14,7 +15,6 @@ export interface PowerStats {
   power?: string;
   combat?: string;
 }
-
 
 type RootStackParamList = {
   CharacterDetails: { character: Item };
@@ -30,7 +30,8 @@ interface CharacterDetailsProps {
 
 export default function CharacterDetails({ route }: CharacterDetailsProps) {
   const { character } = route.params;
-  const {top}= useSafeAreaInsets();
+  const { top } = useSafeAreaInsets();
+
   return (
     <View style={styles.container}>
       <Image
@@ -91,11 +92,10 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
               <Text style={styles.sectionTitle}>Relations: {character?.connections?.relatives}</Text>
             </View>
             <View>
-            <PowerStatsChart character={character} />
+              <PowerStatsChart character={character} />
             </View>
           </View>
         </ScrollView>
-        </View>
       </View>
     </View>
   );

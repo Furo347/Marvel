@@ -44,7 +44,7 @@ class PowerStatsChart extends React.PureComponent {
         return (
             <View style={{ flexDirection: 'row', height: 200, paddingVertical: 10 }}>
                 <YAxis
-                    style={{ flex: 1, marginRight: 6     }}
+                    style={{ flex: -0.5, marginRight: 6     }}
                     data={data}
                     yAccessor={({ index }) => index}
                     scale={scale.scaleBand}
@@ -55,7 +55,7 @@ class PowerStatsChart extends React.PureComponent {
                     )}
                 />
                 <BarChart
-                    style={{ flex: 1, marginLeft: 3 }}
+                    style={{ flex: 1, marginLeft: 10 }}
                     data={data}
                     horizontal={true}
                     yAccessor={({ item }) => item.value}
