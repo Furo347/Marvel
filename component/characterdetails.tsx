@@ -27,9 +27,9 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
         source={{ uri: character?.image?.url }}
       />
       <View style={[styles.overlay, {paddingTop: top}]}>
-      <ScrollView>
-        <Text style={styles.title}>{character?.name}</Text>
         <View style={styles.textContainer}>
+        <ScrollView>
+        <Text style={styles.title}>{character?.name}</Text>
           <Text style={styles.sectionTitle}>{character?.biography!['full-name']}</Text>
           <View style={styles.iconText}>
             <FontAwesome name="map-marker" size={16} color="#FFFFFF" style={styles.icon} />
@@ -79,8 +79,8 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
             <FontAwesome name="users" size={16} color="#FFFFFF" style={styles.icon} />
             <Text style={styles.sectionTitle}>Relations: {character?.connections?.relatives}</Text>
           </View>
-        </View>
         </ScrollView>
+        </View>
       </View>
     </View>
   );
