@@ -20,6 +20,8 @@ export default function BadCharacter(){
 
 const styles = StyleSheet.create({
     container1: {
-      height: 64,
+      top:2,
+      height:"10%",
+      zIndex:2,
     },
 })

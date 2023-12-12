@@ -28,7 +28,7 @@ export default function AllbadCharacter(props: AllgoodCharacterProps) {
   const tabMechants: Item[] = [];
 
   for (const heroName of heroNames) {
-    const { data, isLoading } = useGetCharacterById(heroName);
+    const { data } = useGetCharacterById(heroName);
     const character = data;
     tabMechants.push(character)
   }
