@@ -1,25 +1,23 @@
 import * as React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Item, useGetCharacterByName } from '../hooks/useGetCharacterByName';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useGetCharacterById, Item } from '../hooks/useGetCharacterById';
+import AllgoodCharacter from './allcharactergood';
 
-const heroNames: string[] = [
-  'Iron Man',
-  'Captain America',
-  'Spider-Man',
-  'Black Widow',
-  'Lex Luthor',
-  'Hulk',
-  'Wolverine',
-  'Deadpool',
-  'Wonder Woman',
-  'Batman',
-  'Superman',
-  'Black Panther',
-  'Doctor Strange',
-  'Aquaman',
-  'Killer Croc'
+const heroNames: number[] = [
+  1,
+  4,
+  5,
+  6,
+  10,
+  11,
+  12,
+  13,
+  21,
+  25,
+  31,
+  39
 ];
 
 export default function HomeScreenCharacters() {
@@ -27,10 +25,14 @@ export default function HomeScreenCharacters() {
   let tabGentil = [];
   let tabMechant = [];
   
-  for (const heroName of heroNames) {
-    const { data } = useGetCharacterByName(heroName);
-    if (data){ if ('results' in data && data.results && Array.isArray(data.results) && data.results.length > 0) {
-      const character = data.results[0];
+for (const heroName of heroNames) {
+  const { data, isLoading } = useGetCharacterById(heroName);
+  const character = data;
+
+  // Vérifier si le personnage appartient à Marvel
+  const isMarvelCharacter = character?.biography?.publisher === 'Marvel Comics';
+
+  if (isMarvelCharacter) {
     const alignment = character?.biography?.alignment;
 
     if (alignment === 'good') {
@@ -39,7 +41,7 @@ export default function HomeScreenCharacters() {
       tabMechant.push(character);
     }}}
    
-  }
+  
   
   const navigation = useNavigation<StackNavigationProp<any>>();
   const goToCharacterDetails = (character:  Item) => {
@@ -62,20 +64,39 @@ export default function HomeScreenCharacters() {
       </View>
     </TouchableOpacity>
   ));
-
+  const goToAllCharactersgood = () => {
+    navigation.navigate('AllgoodCharacter');
+  };
+  const goToAllCharactersbad = () => {
+    navigation.navigate('AllbadCharacter');
+  };
   return (
     <>
-     <ScrollView style={styles.scroll}>
-      <View><Text style={styles.categorie}>Protagonistes</Text></View>
+    <ScrollView>
+      <View style={styles.categoryContainer}>
+        <Text style={styles.categorie}>Protagonistes</Text>
+        <TouchableOpacity onPress={goToAllCharactersgood} style={styles.seeAllText}>
+          <View>
+            <Text style={styles.seeAllText}>Voir tout</Text>
+            </View>
+          </TouchableOpacity>
+      </View>
       <ScrollView style={styles.scrollViewContent1} horizontal={true}>
-        {renderCharacterCards(tabGentil)}
+        {renderCharacterCards(tabGentil.slice(0, 6))}
       </ScrollView>
-      <View><Text style={styles.categorie}>Antagonistes</Text></View>
+      <View style={styles.categoryContainer}>
+        <Text style={styles.categorie}>Antagonistes</Text>
+        <TouchableOpacity onPress={goToAllCharactersbad} style={styles.seeAllText}>
+          <View>
+            <Text style={styles.seeAllText}>Voir tout</Text>
+            </View>
+          </TouchableOpacity>
+      </View>
       <ScrollView style={styles.scrollViewContent2} horizontal={true}>
-        {renderCharacterCards(tabMechant)}
+        {renderCharacterCards(tabMechant.slice(0, 6))}
       </ScrollView>
-      </ScrollView>
-    </>
+    </ScrollView>
+  </>
   );
 }
 
@@ -127,9 +148,21 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginBottom : 10,
     marginTop : 10,
-    color: 'red'
+    color: 'red',
   },
   details:  {
     color: 'white'
+  },
+  seeAllText: {
+    fontSize: 16,
+    color: 'black',
+    right: 10,
+  },
+  categoryContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+    marginTop: 10,
   },
 });

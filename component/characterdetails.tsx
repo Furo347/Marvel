@@ -5,6 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { Item } from "../hooks/useGetCharacterByName";
 import PowerStatsChart from './PowerStatsChart';
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 export interface PowerStats {
   intelligence?: number;
   strength?: number;
@@ -13,6 +14,8 @@ export interface PowerStats {
   power?: number;
   combat?: number;
 }
+
+
 type RootStackParamList = {
   CharacterDetails: { character: Item };
 };
@@ -26,7 +29,7 @@ interface CharacterDetailsProps {
 
 export default function CharacterDetails({ route }: CharacterDetailsProps) {
   const { character } = route.params;
-
+  const {top}= useSafeAreaInsets();
   return (
     <View style={styles.container}>
       <Image
@@ -91,6 +94,7 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
             </View>
           </View>
         </ScrollView>
+        </View>
       </View>
     </View>
   );
