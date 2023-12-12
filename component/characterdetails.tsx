@@ -4,7 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { Item } from "../hooks/useGetCharacterByName";
-import PowerStatsChart from './PowerStatsChart'; // Replace './PowerStatsChart' with the correct path
+import PowerStatsChart from './PowerStatsChart';
 export interface PowerStats {
   intelligence?: number;
   strength?: number;
@@ -86,7 +86,7 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
               <FontAwesome name="users" size={16} color="#FFFFFF" style={styles.icon} />
               <Text style={styles.sectionTitle}>Relations: {character?.connections?.relatives}</Text>
             </View>
-            <View style={{backgroundColor: "white" }}>
+            <View>
             <PowerStatsChart character={character} />
             </View>
           </View>
