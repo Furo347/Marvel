@@ -3,14 +3,15 @@ import { View, Text  } from 'react-native'
 import { BarChart, Grid, YAxis } from 'react-native-svg-charts'
 import * as scale from 'd3-scale'
 import { PowerStats } from './characterdetails'
+import { Item } from '../hooks/useGetCharacterByName'
 interface PowerStatsChartProps {
     character: PowerStats;
 }
-class PowerStatsChart extends React.PureComponent {
+class PowerStatsChart extends React.PureComponent<PowerStatsChartProps> {
 
     render() {
         const { character } = this.props;
-        const powerStats = character.powerstats as PowerStats;
+        const powerStats = character as PowerStats;
         const data = [
         {
         value: parseInt(powerStats.combat ?? '0'),
@@ -42,17 +43,15 @@ class PowerStatsChart extends React.PureComponent {
 
 
         return (
-            <View style={{ flexDirection: 'row', height: 200, paddingVertical: 10 }}>
+            <View style={{ flexDirection: 'row', height: 300, paddingVertical: 2 }}>
                 <YAxis
-                    style={{ flex: -0.5, marginRight: 6     }}
+                    style={{ flex: -10, marginRight: 6 }}
                     data={data}
                     yAccessor={({ index }) => index}
                     scale={scale.scaleBand}
                     contentInset={{ top: 10, bottom: 10 }}
-                    spacing={0.2}
-                    formatLabel={(_, index) => (
-                        <Text style={{ color: 'white' }}>{data[index].label}</Text>
-                    )}
+                    formatLabel={(_, index) => String(data[index].label)}
+                    svg={{ fontSize: 12, fill: 'white' }}
                 />
                 <BarChart
                     style={{ flex: 1, marginLeft: 10 }}
@@ -60,7 +59,7 @@ class PowerStatsChart extends React.PureComponent {
                     horizontal={true}
                     yAccessor={({ item }) => item.value}
                     svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
-                    contentInset={{ top: 10, bottom: 10 }}
+                    contentInset={{ top: 5, bottom: 10 }}
                     spacingInner={0.4}
                     gridMin={0}
                 >

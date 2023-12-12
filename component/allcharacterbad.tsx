@@ -28,9 +28,15 @@ export default function AllbadCharacter(props: AllgoodCharacterProps) {
   const tabMechants: Item[] = [];
 
   for (const heroName of heroNames) {
-    const { data } = useGetCharacterById(heroName);
-    const character = data;
-    tabMechants.push(character)
+    const { data, isLoading } = useGetCharacterById(heroName);
+  
+    if (data) {
+      if (Array.isArray(data)) {
+        tabMechants.push(...data);
+      } else {
+        tabMechants.push(data);
+      }
+    }
   }
 
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -93,7 +99,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     padding: 10,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Ajoutez un fond semi-transparent pour améliorer la lisibilité du texte
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   sectionTitle: {
     fontSize: 10,

@@ -3,7 +3,6 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from 'reac
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useGetCharacterById, Item } from '../hooks/useGetCharacterById';
-import AllgoodCharacter from './allcharactergood';
 
 const heroNames: number[] = [
   1,
@@ -22,25 +21,21 @@ const heroNames: number[] = [
 
 export default function HomeScreenCharacters() {
 
-  let tabGentil = [];
-  let tabMechant = [];
+  let tabGentil: Item[] = [];
+  let tabMechant: Item[] = [];
   
-for (const heroName of heroNames) {
-  const { data, isLoading } = useGetCharacterById(heroName);
-  const character = data;
-
-  // Vérifier si le personnage appartient à Marvel
-  const isMarvelCharacter = character?.biography?.publisher === 'Marvel Comics';
-
-  if (isMarvelCharacter) {
-    const alignment = character?.biography?.alignment;
-
-    if (alignment === 'good') {
-      tabGentil.push(character);
-    } else {
-      tabMechant.push(character);
-    }}}
-   
+  for (const heroName of heroNames) {
+    const { data, isLoading } = useGetCharacterById(heroName);
+    if (!isLoading && data) {
+      const alignment = data?.biography?.alignment;
+  
+      if (alignment === 'good') {
+        tabGentil.push(data);
+      } else {
+        tabMechant.push(data);
+      }
+    }
+  }
   
   
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -49,7 +44,7 @@ for (const heroName of heroNames) {
   };
 
   const renderCharacterCards = (characters: Item[]) =>
-  characters.map((character:  Item, index: number) => (
+  characters.map((character: Item, index: number) => (
     <TouchableOpacity key={index} onPress={() => goToCharacterDetails(character)}>
       <View key={index} style={styles.imageContainer}>
         <Image

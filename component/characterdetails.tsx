@@ -33,12 +33,12 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
   const { top } = useSafeAreaInsets();
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {paddingTop: top}]}>
       <Image
         style={styles.image}
         source={{ uri: character?.image?.url }}
       />
-      <View style={styles.overlay}>
+      <View style={[styles.overlay, {paddingTop:top}]}>
         <ScrollView>
           <Text style={styles.title}>{character?.name}</Text>
           <View style={styles.textContainer}>
@@ -92,7 +92,7 @@ export default function CharacterDetails({ route }: CharacterDetailsProps) {
               <Text style={styles.sectionTitle}>Relations: {character?.connections?.relatives}</Text>
             </View>
             <View>
-              <PowerStatsChart character={character} />
+              <PowerStatsChart character={character.powerstats} />
             </View>
           </View>
         </ScrollView>

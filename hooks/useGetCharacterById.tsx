@@ -38,7 +38,7 @@ export type Item = {
 
 export type ResponseItem = Item[];
 export const useGetCharacterById = (id: number) => {
-  return useQuery<ResponseItem>({
+  return useQuery<Item[]>({
     queryKey: ['id', id],
     queryFn: () => ApiClient.getCharacterById(id),
   });

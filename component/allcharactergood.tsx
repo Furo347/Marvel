@@ -43,8 +43,14 @@ export default function AllgoodCharacter(props: AllgoodCharacterProps) {
 
   for (const heroName of heroNames) {
     const { data, isLoading } = useGetCharacterById(heroName);
-    const character = data;
-    tabGentil.push(character)
+  
+    if (data) {
+      if (Array.isArray(data)) {
+        tabGentil.push(...data);
+      } else {
+        tabGentil.push(data);
+      }
+    }
   }
 
   const navigation = useNavigation<StackNavigationProp<any>>();
