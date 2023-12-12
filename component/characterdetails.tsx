@@ -7,12 +7,12 @@ import { Item } from "../hooks/useGetCharacterByName";
 import PowerStatsChart from './PowerStatsChart';
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 export interface PowerStats {
-  intelligence?: number;
-  strength?: number;
-  speed?: number;
-  durability?: number;
-  power?: number;
-  combat?: number;
+  intelligence?: string;
+  strength?: string;
+  speed?: string;
+  durability?: string;
+  power?: string;
+  combat?: string;
 }
 
 
@@ -25,6 +25,7 @@ type CharacterDetailsRouteProp = RouteProp<RootStackParamList, 'CharacterDetails
 interface CharacterDetailsProps {
   route: CharacterDetailsRouteProp;
   navigation: StackNavigationProp<RootStackParamList, 'CharacterDetails'>;
+  character: Item;
 }
 
 export default function CharacterDetails({ route }: CharacterDetailsProps) {

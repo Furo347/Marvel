@@ -2,38 +2,43 @@ import React from 'react'
 import { View, Text  } from 'react-native'
 import { BarChart, Grid, YAxis } from 'react-native-svg-charts'
 import * as scale from 'd3-scale'
-
+import { PowerStats } from './characterdetails'
+interface PowerStatsChartProps {
+    character: PowerStats;
+}
 class PowerStatsChart extends React.PureComponent {
 
     render() {
         const { character } = this.props;
-        const powerStats = character.powerstats
+        const powerStats = character.powerstats as PowerStats;
         const data = [
-            { 
-                value: parseInt(powerStats.combat) | 0,
-                label: 'Combat Power',
-            },
-            {
-                value: parseInt(powerStats.durability) | 0,
-                label: 'Durability',
-            },
-            {
-                value: parseInt(powerStats.intelligence) | 0,
-                label: 'Intelligence',
-            },
-            {
-                value: parseInt(powerStats.power) | 0,
-                label: 'Power',
-            },
-            {
-                value: parseInt(powerStats.speed) | 0,
-                label: 'Speed',
-            },
-            {
-                value: parseInt(powerStats.strength) | 0,
-                label: 'Strength',
-            },
-        ]
+        {
+        value: parseInt(powerStats.combat ?? '0'),
+        label: 'Combat Power',
+        },
+        {
+            value: parseInt(powerStats.durability ?? '0'),
+            label: 'Durability',
+        },
+        {
+            value: parseInt(powerStats.intelligence ?? '0'),
+            label: 'Intelligence',
+        },
+        {
+            value: parseInt(powerStats.power ?? '0'),
+            label: 'Power',
+        },
+        {
+            value: parseInt(powerStats.speed ?? '0'),
+            label: 'Speed',
+        },
+        {
+            value: parseInt(powerStats.strength ?? '0'),
+            label: 'Strength',
+        },
+];
+
+
 
 
         return (
