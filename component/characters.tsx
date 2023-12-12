@@ -3,7 +3,6 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from 'reac
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useGetCharacterById, Item } from '../hooks/useGetCharacterById';
-import AllgoodCharacter from './allcharactergood';
 
 const heroNames: number[] = [
   1,
@@ -22,7 +21,7 @@ const heroNames: number[] = [
 
 export default function HomeScreenCharacters() {
 
-  let tabGentil = [];
+  let tabGentil= [];
   let tabMechant = [];
   
 for (const heroName of heroNames) {
