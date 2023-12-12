@@ -86,7 +86,7 @@ const SuperheroDisplay = () => {
 
 const styles = StyleSheet.create({
   scrollViewContent: {
-    paddingBottom:"20%",
+    paddingBottom:"50%",
     paddingHorizontal: 10,
     top: 10,
     overflow: 'hidden',

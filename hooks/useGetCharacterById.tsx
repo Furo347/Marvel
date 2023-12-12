@@ -1,18 +1,11 @@
 //useGetCharacterByName.tsx
 import { useQuery } from "@tanstack/react-query";
 import { ApiClient } from "../api";
-
+import { PowerStats } from "../component/characterdetails";
 export type Item = {
   id: number,
   name: string,
-  powerstats?: {
-    intelligence?: number,
-    strength?: number,
-    speed?: number,
-    durability?: number,
-    power?: number,
-    combat?: number
-  },
+  powerstats?: PowerStats,
   biography?: {
     "full-name"?: string,
     "alter-egos"?: string,
@@ -44,10 +37,10 @@ export type Item = {
 }
 
 export type ResponseItem = Item[];
-
 export const useGetCharacterById = (id: number) => {
-  return useQuery<ResponseItem>({
+  return useQuery<Item[]>({
     queryKey: ['id', id],
     queryFn: () => ApiClient.getCharacterById(id),
   });
 };
+

@@ -1,11 +1,14 @@
-import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, Linking, ScrollView } from "react-native";
-import { FontAwesome } from '@expo/vector-icons'; // Import FontAwesome icons
+import { View, Text, Image, StyleSheet, Linking, ScrollView, TouchableOpacity } from "react-native";
+import { Video } from "expo-av";
+import Constants from "expo-constants";
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { Film } from "../hooks/useGetFilmByName";
-import { RouteProp } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { FontAwesome } from '@expo/vector-icons';
+import React from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type RootStackParamList = {
   FilmsDetails: { film: Film };
@@ -29,14 +32,14 @@ const FilmsDetails = ({ route, navigation }: FilmsDetailsProps) => {
       console.log('Trailer URL is undefined or film does not exist');
     }
   };
-
+const {top}=useSafeAreaInsets();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {paddingTop: top}]}>
       <Image
         style={styles.image}
         source={{ uri: film.cover_url }}
       />
-      <View style={styles.overlay}>
+      <View style={[styles.overlay, {paddingTop: top}]}>
         <View style={styles.textContainer}>
           <ScrollView>
           <Text style={styles.title}>{film.title}</Text>
