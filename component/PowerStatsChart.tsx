@@ -15,7 +15,7 @@ class PowerStatsChart extends React.PureComponent<PowerStatsChartProps> {
         const data = [
         {
         value: parseInt(powerStats.combat ?? '0'),
-        label: 'Combat Power',
+        label: 'Combat',
         },
         {
             value: parseInt(powerStats.durability ?? '0'),
