@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginBottom : 10,
     marginTop : 10,
-    color: 'red'
+    color: 'red',
   },
   details:  {
     color: 'white'

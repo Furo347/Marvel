@@ -5,10 +5,13 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { useGetCharacterById, Item } from '../hooks/useGetCharacterById';
 
 const { width, height } = Dimensions.get('window');
-const heroNames: number[] = [];
-for (let id = 1; id <= 731; id++) {
-  heroNames.push(id);
-}
+const heroNames: number[] = [
+  1, 9, 10, 11, 12, 24, 25, 26, 30, 31, 
+  39, 40, 42, 43, 44, 45, 48, 56, 61, 62, 
+  72, 74, 75, 79, 80, 86, 88, 92, 96, 99, 
+  101, 102, 106, 107, 108, 112, 113, 114,
+  115, 121, 128, 131
+];
 
 interface AllgoodCharacterProps {}
 
@@ -18,17 +21,7 @@ export default function AllgoodCharacter(props: AllgoodCharacterProps) {
   for (const heroName of heroNames) {
     const { data, isLoading } = useGetCharacterById(heroName);
     const character = data;
-
-    // Vérifier si le personnage appartient à Marvel
-    const isMarvelCharacter = character?.biography?.publisher === 'Marvel Comics';
-
-    if (isMarvelCharacter) {
-      const alignment = character?.biography?.alignment;
-
-      if (alignment === 'good') {
-        tabGentil.push(character);
-      }
-    }
+    tabGentil.push(character)
   }
 
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -40,7 +33,7 @@ export default function AllgoodCharacter(props: AllgoodCharacterProps) {
     <View style={styles.scrollViewContent}>
       <FlatList
         data={tabGentil}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item?.id?.toString()}
         horizontal={false}
         numColumns={2}
         renderItem={({ item }) => (
